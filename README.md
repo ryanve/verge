@@ -31,9 +31,9 @@ $(elems).inViewport(verge, invert)
 Filter a matched set so that it contains only elements that are in the current viewport. An element is considered in the viewport if at least one pixel of it is in the viewport. Returns the filtered set (e.g. jQuery object). 
 
 ```js
-$('div').inViewport()     // contains div's that are in the current viewport (exact)
-$('div').inViewport(100)  // contains div's that are in the current viewport or within 100px of it
-$('div').inViewport(-100) // contains div's that are in the current viewport and not w/in 99px of the edge
+$('div').inViewport()     // contains div's in the current viewport (exact)
+$('div').inViewport(100)  // contains div's in the current viewport or within 100px of it
+$('div').inViewport(-100) // contains div's in the current viewport and not w/in 99px of the edge
 $('div').inViewport(0, true) // contains div's that are *not* in the current viewport (exact)
 ```
 
@@ -49,10 +49,10 @@ verge.inViewport.call(elementArray [, verge, invert])
 Filter a matched set so that it contains only elements that are in the current viewport. Returns the filtered set (e.g. jQuery object). 
 
 ```js
-$('div').inX()     // contains div's that are in the same x-axis section as the current viewport
-$('div').inX(100)  // contains div's that are in the same x-axis section as the current viewport or within 100px of it
-$('div').inX(0, true) // contains div's that are outside the y-axis section that the current viewport in in (exact)
-verge.inX.call($('div')) // get *array* that only contains div's in the same x-axis section as the current viewport
+$('div').inX()     // contains div's in the same x-axis section as the current viewport
+$('div').inX(100)  // contains div's in the same x-axis section as the current viewport or within 100px of it
+$('div').inX(0, true) // contains div's outside the y-axis section that the current viewport in in (exact)
+verge.inX.call($('div')) // get *array* that contains div's in the same x-axis section as the current viewport
 ```
 
 ### $.fn.inY()
@@ -60,10 +60,10 @@ verge.inX.call($('div')) // get *array* that only contains div's in the same x-a
 Filter a matched set so that it contains only elements that are in the current viewport. Returns the filtered set (e.g. jQuery object). 
 
 ```js
-$('div').inY()     // contains div's that are in the same y-axis section as the current viewport
-$('div').inY(100)  // contains div's that are in the same y-axis section as the current viewport or within 100px of it
-$('div').inY(0, true) // contains div's that are outside the y-axis section that the current viewport in in (exact)
-verge.inY.call($('div')) // get *array* that only contains div's in the same y-axis section as the current viewport
+$('div').inY()     // contains div's in the same y-axis section as the current viewport
+$('div').inY(100)  // contains div's in the same y-axis section as the current viewport or within 100px of it
+$('div').inY(0, true) // contains div's outside the y-axis section that the current viewport in in (exact)
+verge.inY.call($('div')) // get *array* that contains div's in the same y-axis section as the current viewport
 ```
 
 ## top-level
@@ -127,7 +127,7 @@ $.rectangle(elem, 100)  // get elem's rectangle object adjusted by 100 pixels
 
 ### $.bindVerger()
 
-Convert a function into a filter for the specified wrapper. In other works it binds a filter function to a wrapper and returns the bound function. 
+Convert a function into a filter for the specified wrapper. It binds a filter function to a wrapper and returns the bound function. The resulting method will be [faster](http://jsperf.com/bind-verger) than manually filtering via `$.fn.filter()` or `$.fn.not()`
 
 ```js
 /**
@@ -155,7 +155,7 @@ Then `$.fn.isSquare` could be used like so:
 $('div').isSquare() // contains only divs that are square
 ```
 
-To `bindVerger` method is used internally to convert the top-level boolean forms of `inX` / `inY` / `inViewport` into their corresponding effin filters. For them, the `option` is used for the verge amount. Custom functions can use the `option` parameter as they see fit. The signature of the new function is like that of `$.fn.inViewport()` described above and includes the abilty to invert via the second parameter.
+The `bindVerger` method is used internally to convert the top-level boolean forms of `inX` / `inY` / `inViewport` into their corresponding effin filters. For them, the `option` parameter is utilized for the specifying the verge amount. Custom functions can utilize the `option` parameter as they see fit. The signature of the new function is like that of `$.fn.inViewport()` described above—including the abilty to invert via the second parameter.
 
 
 ### verge.bridge()
