@@ -9,18 +9,12 @@ To simplify the docs below, let `$` represent `verge` or the host lib.
 
 ## chainable
 
-The chainable versions of `inX`/`inY`/`inViewport` are **filters** designed for use with jQuery (or jQuery-compatible hosts). All three use the same signature:
+The chainable versions of `inX`/`inY`/`inViewport` are **filters** designed for use with jQuery (or jQuery-compatible hosts). All three use the same signature: `$(elems).inY(verge, invert)` where both parameters are optional:
 
 ```js
 @param {number=}   verge    is an optional cushion amount in pixels to surround the
                             element in question. (default: 0)
 @param {boolean=}  invert   when set to true, will invert the filter. (default: false)
-```
-
-```js
-$(elems).inViewport()
-$(elems).inViewport(verge)
-$(elems).inViewport(verge, invert)
 ```
 
 ### $.fn.inViewport()
