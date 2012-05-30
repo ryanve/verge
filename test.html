@@ -1,0 +1,296 @@
+<!doctype html>
+<!--[if lte IE 8]> <html class="oldie solarized" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="solarized" lang=en> <!--<![endif]-->
+<head>
+	<meta charset=utf-8>
+	<title>Verge Test Suite</title>
+	<meta name=viewport content="width=device-width,initial-scale=1.0">
+	<link rel=stylesheet href="http://cdn.airve.com/css/packed/normalize_responsive_solarized.20120408.css">
+	<meta name=author content="Ryan Van Etten">
+	<meta name=description content="JavaScript library test suite"> 
+	<style>
+	body{margin:1em auto;max-width:100%;width:94%;padding:0 3%}
+	a{text-decoration:none;cursor:pointer}
+	a:not(:hover){color:#d33682}
+	code .number {color:#b58900}
+	html:not(.dark) ::-moz-selection{background:#ed0;color:#002b36}
+	     html:not(.dark) ::selection{background:#ed0;color:#002b36}
+	pre,td,th{padding:1em;text-align:left;border-left:1px solid #eed}
+	td{font-weight:bold;color:#2aa198}
+	td:first-child{font-weight:normal;color:#586e75}
+	td:last-child{color:#dc322f}
+	pre{padding:1em;background:#859900;color:#fdf6e3}
+	th{font-size:140%}
+	#footer{margin:2em 0;border-bottom:1em solid #ffe}
+	nav ul li{display:block;float:left;margin:0 0 1em}
+	nav ul li a{padding:.5em;background:#cb4b16;color:#fdf6e3!important;margin:0 1px 1em 0}
+	nav ul li a:hover{color:#ffe;background:#b58900}
+	[accesskey=z]{visibility:hidden;width:0;height:0}
+	</style>
+	<!--code.google.com/p/html5shiv/ -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body>
+
+	<header id="header">
+		<h1><a href="http://github.com/ryanve/verge">Verge</a> Test Suite</h1>
+	</header>
+	
+	<pre id=ua></pre>
+
+	<!--[if IE]>
+		<strong>[ ! ] Tests in <abbr class=red>IE</abbr> may not work locally.</strong>
+	<![endif]-->
+
+	<div id="a"><pre>div#a</pre></div>
+	
+	<table id=tests>
+		<tr>
+			<th scope="col"><a href=#tests accesskey=s>test<br>code</a></th>
+			<th scope="col"><a href=#tests>expected<br>type</a></th>
+			<th scope="col"><a href=#tests>live<br>output</a></th>
+		</tr>
+		<tr>
+			<td><code>$.inViewport(a, <span class=number>-100</span>)</code></td>
+			<td><code>boolean</code></td>
+			<td><code id=in-viewport-a-neg></code></td>
+		</tr>
+		<tr>
+			<td><code>$.inViewport(a)</code></td>
+			<td><code>boolean</code></td>
+			<td><code id=in-viewport-a></code></td>
+		</tr>
+		<tr>
+			<td><code>$.inViewport(a, <span class=number>100</span>)</code></td>
+			<td><code>boolean</code></td>
+			<td><code id=in-viewport-a-pos></code></td>
+		</tr>
+		<tr>
+			<td><code>$.viewportW()</code></td>
+			<td><code>number</code></td>
+			<td><code id=viewport-w></code></td>
+		</tr>
+		<tr>
+			<td><code>$.viewportH()</code></td>
+			<td><code>number</code></td>
+			<td><code id=viewport-h></code></td>
+		</tr>
+		<tr>
+			<td><code>$.scrollX()</code></td>
+			<td><code>number</code></td>
+			<td><code id=scroll-x></code></td>
+		</tr>
+		<tr>
+			<td><code>$.scrollY()</code></td>
+			<td><code>number</code></td>
+			<td><code id=scroll-y></code></td>
+		</tr>
+		<tr>
+			<td><code>$.rectangle(a).top</code></td>
+			<td><code>number</code></td>
+			<td><code id=top></code></td>
+		</tr>
+		<tr>
+			<td><code>$.rectangle(a).bottom</code></td>
+			<td><code>number</code></td>
+			<td><code id=bottom></code></td>
+		</tr>
+		<tr>
+			<td><code>$.rectangle(a).left</code></td>
+			<td><code>number</code></td>
+			<td><code id=left></code></td>
+		</tr>
+		<tr>
+			<td><code>$.rectangle(a).right</code></td>
+			<td><code>number</code></td>
+			<td><code id=right></code></td>
+		</tr>
+		<tr>
+			<td><code>$.rectangle(a).width</code></td>
+			<td><code>number</code></td>
+			<td><code id=width></code></td>
+		</tr>
+		<tr>
+			<td><code>$.rectangle(a).height</code></td>
+			<td><code>number</code></td>
+			<td><code id=height></code></td>
+		</tr>
+		<tr>
+			<td><code>$a.rectangle().top === $.rectangle(a).top</code></td>
+			<td><code>boolean</code></td>
+			<td><code id=rectangle-compare></code></td>
+		</tr>
+		<tr>
+			<td><code>$abc.inX().length</code></td>
+			<td><code>number</code></td>
+			<td><code id=in-x-filter></code></td>
+		</tr>
+		<tr>
+			<td><code>$abc.inY().length</code></td>
+			<td><code>number</code></td>
+			<td><code id=in-y-filter></code></td>
+		</tr>
+		<tr>
+			<td><code>$abc.inViewport().length</code></td>
+			<td><code>number</code></td>
+			<td><code id=in-viewport-filter></code></td>
+		</tr>
+		<tr>
+			<td><code>$.fn.inViewport.call($abc).length</code></td>
+			<td><code>number</code></td>
+			<td><code id=in-viewport-call></code></td>
+		</tr>
+		<tr>
+			<td><code>$.inViewport(b, <span class=number>100</span>)</code></td>
+			<td><code>boolean</code></td>
+			<td><code id=in-viewport-b-pos></code></td>
+		</tr>
+		<tr>
+			<td><code>$.inViewport(b)</code></td>
+			<td><code>boolean</code></td>
+			<td><code id=in-viewport-b></code></td>
+		</tr>
+		<tr>
+			<td><code>$.inViewport(b, <span class=number>-100</span>)</code></td>
+			<td><code>boolean</code></td>
+			<td><code id=in-viewport-b-neg></code></td>
+		</tr>
+	</table>
+	
+	<div id="b"><pre>div#b</pre></div>
+	<div id="c"><pre>div#c</pre></div>
+
+	<footer id="footer">
+		<nav>
+			<ul>
+				<li><a href="#header" title="up" accesskey=a><span class=shape>&#9650;</span></a>
+				<li><a href="https://github.com/ryanve/verge" title="view repo" accesskey=1>Github</a>
+				<li><a href="https://github.com/ryanve/verge/issues" title="report an issue" accesskey=9>Issue?</a>
+				<li><a href="#footer" title="down" accesskey=z>&#9660;</a>
+			</ul>
+		</nav>
+
+	</footer>
+
+	<!-- accesskeys: 
+		1: homepage
+		a: jump to top 
+		z: jump to bottom 
+		s: skip to main content
+	-->
+
+	<!-- Use library for events and to test integration.
+	     Use one of these - Ender Jeesh or jQuery: -->
+	<script src="http://airve.github.com/js/jeesh/jeesh.min.js"></script>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>-->
+
+	<!-- github.com/ryanve/verge  -->
+	<script src="verge.js"></script>
+
+	<script>
+	(function(window, document) {
+
+		var $ = window.$
+		  , verge = window.verge
+		  , console = window.console
+		  , hasConsole = !!console && typeof console.log === 'function'
+		  , readyTests = {}   // tests that need to happen on *ready*
+		  , resizeTests = {}  // tests that need to happen on *resize*
+		  , scrollTests = {}  // tests that need to happen on *scroll*
+		  , dynamicTests = {} // tests that need to happen on *resize* AND *scroll*
+		  , a, b, c, d, $a, $b, $c, $d; // elements (native and wrapped)
+
+		function update(tests) {
+			var n, output, el;
+			for (n in tests) {
+				if (tests.hasOwnProperty(n) && (el = document.getElementById(n))) {
+					output = tests[n];
+					if (typeof output === 'function') { output = output(); }
+					el.innerHTML = String(output);
+				}
+			}
+		}
+
+		function aug(receiver, supplier, force) {
+			for (var n in supplier) {
+				if (supplier.hasOwnProperty(n) && typeof supplier[n] !== 'undefined') {
+					if (force || typeof receiver[n] === 'undefined') {
+						receiver[n] = supplier[n];
+					}
+				}
+			}
+			return receiver;
+		}
+		
+		// Make sure the $ methods tested are the verge methods:
+		verge.bridge($, true);
+
+		// Print the ua (not a test, but should print on ready)
+		readyTests['ua'] = navigator.userAgent || '';
+		
+		// TESTS:
+
+		resizeTests['viewport-w'] = $.viewportW;
+		resizeTests['viewport-h'] = $.viewportH;
+		scrollTests['scroll-x']   = $.scrollX;
+		scrollTests['scroll-y']   = $.scrollY;
+		
+		dynamicTests['top']       = function() { return $.rectangle(a).top; };
+		dynamicTests['bottom']    = function() { return $.rectangle(a).bottom; };
+		dynamicTests['left']      = function() { return $.rectangle(a).left; };
+		dynamicTests['right']     = function() { return $.rectangle(a).right; };
+		dynamicTests['width']     = function() { return $.rectangle(a).width; };
+		dynamicTests['height']    = function() { return $.rectangle(a).height; };
+		
+		dynamicTests['rectangle-compare']  = function() { return $a.rectangle().top === $.rectangle(a).top; };
+		dynamicTests['in-x-filter']        = function() { return $abc.inX().length; };
+		dynamicTests['in-y-filter']        = function() { return $abc.inY().length; };
+		dynamicTests['in-viewport-filter'] = function() { return $abc.inViewport().length; };
+		dynamicTests['in-viewport-call']   = function() { return $.fn.inViewport.call($abc).length; };
+		
+		dynamicTests['in-viewport-a']      = function() { return $.inViewport(a); };
+		dynamicTests['in-viewport-a-pos']  = function() { return $.inViewport(a, 100); };
+		dynamicTests['in-viewport-a-neg']  = function() { return $.inViewport(a, -100); };
+		dynamicTests['in-viewport-b']      = function() { return $.inViewport(b); };
+		dynamicTests['in-viewport-b-pos']  = function() { return $.inViewport(b, 100); };
+		dynamicTests['in-viewport-b-neg']  = function() { return $.inViewport(b, -100); };
+		
+		// Merge tests by event:
+		resizeTests = aug(resizeTests, dynamicTests);
+		scrollTests = aug(scrollTests, dynamicTests);
+		readyTests = aug(aug(readyTests, scrollTests), resizeTests); // all of em
+		
+		// Print test outputs:
+		$(document).ready(function(){ 
+			$a = $('#a'); 
+			$b = $('#b'); 
+			$c = $('#c'); 
+			a = $a[0];
+			b = $b[0];
+			c = $c[0];
+			$abc = $([a,b,c]);
+			update(readyTests); 
+			if (hasConsole) {
+				console.log(verge);
+				console.log($a.rectangle());
+				console.log($.rectangle(a));
+				verge.noConflict(function(v){
+					// both of these should be true:
+					console.log( v === verge ); 
+					console.log( !window.hasOwnProperty('verge'));
+				});
+			}
+		});
+		
+		$(window).resize(function(){ 
+			update(resizeTests); 
+		}).scroll(function(){
+			update(scrollTests); 
+		});
+
+	}(this, this.document));
+	</script>
+</body> 
+</html>
