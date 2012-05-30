@@ -49,9 +49,9 @@ verge.inViewport.call(elementArray [, verge, invert])
 Filter a matched set so that it contains only elements that are in the current viewport. Returns the filtered set (e.g. jQuery object). 
 
 ```js
-$('div').inX()     // contains div's in the same x-axis section as the current viewport
-$('div').inX(100)  // contains div's in the same x-axis section as the current viewport or within 100px of it
-$('div').inX(0, true) // contains div's outside the y-axis section that the current viewport in in (exact)
+$('div').inX()     // contains div's in the same x-axis section as the viewport
+$('div').inX(100)  // contains div's in the same x-axis section as the viewport or w/in 100px of it
+$('div').inX(0, true) // contains div's outside the y-axis section that the viewport in in (exact)
 verge.inX.call($('div')) // get *array* that contains div's in the same x-axis section as the current viewport
 ```
 
@@ -60,10 +60,10 @@ verge.inX.call($('div')) // get *array* that contains div's in the same x-axis s
 Filter a matched set so that it contains only elements that are in the current viewport. Returns the filtered set (e.g. jQuery object). 
 
 ```js
-$('div').inY()     // contains div's in the same y-axis section as the current viewport
-$('div').inY(100)  // contains div's in the same y-axis section as the current viewport or within 100px of it
-$('div').inY(0, true) // contains div's outside the y-axis section that the current viewport in in (exact)
-verge.inY.call($('div')) // get *array* that contains div's in the same y-axis section as the current viewport
+$('div').inY()     // contains div's in the same y-axis section as the viewport
+$('div').inY(100)  // contains div's in the same y-axis section as the viewport or w/in 100px of it
+$('div').inY(0, true) // contains div's outside the y-axis section that the viewport in in (exact)
+verge.inY.call($('div')) // get *array* that contains div's in the same y-axis section as the viewport
 ```
 
 ## top-level
@@ -103,7 +103,7 @@ Test if any part of an element (or the first element in a matched set) is in the
 ```js
 $.inX(elem)       // true if elem is in same x-axis as the viewport (exact)
 $.inX(elem, 100)  // true if elem is in same x-axis as the viewport or within 100px of it
-$.inX(elem, -100) // true if elem in is the current viewport and not within 99px of the edge
+$.inX(elem, -100) // true if elem in is the viewport and not within 99px of the edge
 ```
 
 ### $.inY()
@@ -113,12 +113,12 @@ Test if any part of an element (or the first element in a matched set) is in the
 ```js
 $.inY(elem)       // true if elem is in same y-axis as the viewport (exact)
 $.inY(elem, 100)  // true if elem is in same y-axis as the viewport or within 100px of it
-$.inY(elem, -100) // true if elem in is the current viewport and not within 99px of the edge
+$.inY(elem, -100) // true if elem in is the viewport and not within 99px of the edge
 ```
 
 ### $.rectangle()
 
-The `$.rectangle(elem [, verge])` method returns an a object containing the properties `top`, `bottom`, `left`, `right`, `width`, and `height` with respect to the top-left corner of the current viewport, with an optional verge amount. Its return is like that of the native [getBoundingClientRect](https://developer.mozilla.org/en/DOM/element.getBoundingClientRect) and it makes sure that all six properties are included. The optional `verge` parameter is an amount of pixels to act as a cushion around the element. If none is provided then it defaults to `0` and the rectangle will match the result of the native rectangle. If a verge is provided, the properties are adjusted according to the verge amount. If the verge is **positive** the rectangle will represent an area that is larger that the actual element. If the verge is a **negative** number then the rectangle will represent an area that is **smaller** that the actual element. 
+The `$.rectangle(elem [, verge])` method returns an a object containing the properties `top`, `bottom`, `left`, `right`, `width`, and `height` with respect to the top-left corner of the current viewport, and with an optional verge amount. Its return is like that of the native [getBoundingClientRect](https://developer.mozilla.org/en/DOM/element.getBoundingClientRect), plus the assurance that all six properties will exist. The optional `verge` parameter is an amount of pixels to act as a cushion around the element. If none is provided then it defaults to `0` and the rectangle will match the result of the native rectangle. If a verge is provided, the properties are adjusted according to the verge amount. If the verge is **positive** the rectangle will represent an area that is larger that the actual element. If the verge is a **negative** number then the rectangle will represent an area that is **smaller** that the actual element. 
 
 ```js
 $.rectangle(elem)       // get elem's rectangle object
