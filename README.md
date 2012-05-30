@@ -12,12 +12,9 @@ To simplify the docs below, let `$` represent `verge` or the host lib.
 The chainable versions of `inX`/`inY`/`inViewport` are **filters** designed for use with jQuery (or jQuery-compatible hosts). All three use the same signature:
 
 ```js
-/**
- * inX() / inY() / inViewport()
- * @param {number=}   verge    is an optional cushion amount in pixels to surround the
- *                             element in question. (default: 0)
- * @param {boolean=}  invert   when set to true, will invert the filter. (default: false)
- */
+@param {number=}   verge    is an optional cushion amount in pixels to surround the
+                            element in question. (default: 0)
+@param {boolean=}  invert   when set to true, will invert the filter. (default: false)
 ```
 
 ```js
@@ -31,10 +28,10 @@ $(elems).inViewport(verge, invert)
 Filter a matched set so that it contains only elements that are in the current viewport. An element is considered in the viewport if at least one pixel of it is in the viewport. Returns the filtered set (e.g. jQuery object). 
 
 ```js
-$('div').inViewport()     // contains div's in the current viewport (exact)
-$('div').inViewport(100)  // contains div's in the current viewport or within 100px of it
-$('div').inViewport(-100) // contains div's in the current viewport and not w/in 99px of the edge
-$('div').inViewport(0, true) // contains div's that are *not* in the current viewport (exact)
+$('div').inViewport()     // contains div's in the viewport (exact)
+$('div').inViewport(100)  // contains div's in the viewport or within 100px of it
+$('div').inViewport(-100) // contains div's in the viewport and not w/in 99px of the edge
+$('div').inViewport(0, true) // contains div's that are *not* in the viewport (exact)
 ```
 
 Using the standalone `verge` object, it is also possible to filter an element array (or array-like object) into a new **array** like so:
@@ -52,7 +49,7 @@ Filter a matched set so that it contains only elements that are in the current v
 $('div').inX()     // contains div's in the same x-axis section as the viewport
 $('div').inX(100)  // contains div's in the same x-axis section as the viewport or w/in 100px of it
 $('div').inX(0, true) // contains div's outside the y-axis section that the viewport in in (exact)
-verge.inX.call($('div')) // get *array* that contains div's in the same x-axis section as the current viewport
+verge.inX.call($('div')) // get *array* that contains div's in the same x-axis section as the viewport
 ```
 
 ### $.fn.inY()
