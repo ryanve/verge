@@ -109,7 +109,9 @@ $.inY(elem, -100) // true if elem in is the viewport and not within 99px of the 
 
 ### $.rectangle()
 
-The `$.rectangle(elem [, verge])` method returns an a object containing the properties `top`, `bottom`, `left`, `right`, `width`, and `height` with respect to the top-left corner of the current viewport, and with an optional verge amount. Its return is like that of the native [getBoundingClientRect](https://developer.mozilla.org/en/DOM/element.getBoundingClientRect), plus the assurance that all six properties will exist. The optional `verge` parameter is an amount of pixels to act as a cushion around the element. If none is provided then it defaults to `0` and the rectangle will match the result of the native rectangle. If a verge is provided, the properties are adjusted according to the verge amount. If the verge is **positive** the rectangle will represent an area that is larger that the actual element. If the verge is a **negative** number then the rectangle will represent an area that is **smaller** that the actual element. 
+The `$.rectangle(elem [, verge])` method returns an a object containing the properties `top`, `bottom`, `left`, `right`, `width`, and `height` with respect to the top-left corner of the current viewport, and with an optional verge amount. Its return is like that of the native [getBoundingClientRect](https://developer.mozilla.org/en/DOM/element.getBoundingClientRect) (with the added assurance that all six properties will exist).
+
+The optional `verge` parameter is an amount of pixels to act as a cushion around the element. If none is provided then it defaults to `0` and the rectangle will match the result of the native rectangle. If a verge is specified, the properties are adjusted according to the verge amount. If the verge is **positive** the rectangle will represent an area that is larger that the actual element. If the verge is **negative** then the rectangle will represent an area that is **smaller** that the actual element. 
 
 ```js
 $.rectangle(elem)       // get elem's rectangle object
