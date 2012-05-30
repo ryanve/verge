@@ -14,12 +14,13 @@ The chainable versions of `inX`/`inY`/`inViewport` are **filters** designed for 
 ```js
 /**
  * inX() / inY() / inViewport()
- *
- * @param {number=}   verge   is an optional cushion amount in pixels to surround the element in question. (default: 0)
- * @param {boolean=}  invert  when set to true, will invert the filter. (default: false)
- *
+ * @param {number=}   verge    is an optional cushion amount in pixels to surround the
+ *                             element in question. (default: 0)
+ * @param {boolean=}  invert   when set to true, will invert the filter. (default: false)
  */
+```
 
+```js
 $(elems).inViewport()
 $(elems).inViewport(verge)
 $(elems).inViewport(verge, invert)
@@ -32,14 +33,15 @@ Filter a matched set so that it contains only elements that are in the current v
 ```js
 $('div').inViewport()     // contains div's that are in the current viewport (exact)
 $('div').inViewport(100)  // contains div's that are in the current viewport or within 100px of it
-$('div').inViewport(-100) // contains div's that are in the current viewport and not within 99px of the edge
+$('div').inViewport(-100) // contains div's that are in the current viewport and not w/in 99px of the edge
 $('div').inViewport(0, true) // contains div's that are *not* in the current viewport (exact)
 ```
 
 Using the standalone `verge` object, it is also possible to filter an element array (or array-like object) into a new **array** like so:
 
 ```js
-verge.inViewport.call(elementArray [, verge, invert])  // get array that only contains elems in the current viewport
+// Get array that only contains elems in the current viewport:
+verge.inViewport.call(elementArray [, verge, invert])
 ```
 
 ### $.fn.inX()
@@ -127,6 +129,7 @@ $.rectangle(elem, 100)  // get elem's rectangle object adjusted by 100 pixels
 
 Convert a function into a filter for the specified wrapper. In other works it binds a filter function to a wrapper and returns the bound function. 
 
+```js
 /**
  * @param  {function(elem [, option])}  fn         the function to convert
  * @param  {Object|function|null}       wrapper    the object or function to bind to (e.g. jQuery). 
@@ -135,8 +138,9 @@ Convert a function into a filter for the specified wrapper. In other works it bi
  *                                                 new function would be an instanceof the wrapper.
  *                                                 Otherwise the new function will return an array.
  */
+```
 
-**Contrived example**: create a filter that filters out elements that are not square:
+**Contrived example**: create a method that filters out non-sqaure elements:
 
 ```js
 $.fn.isSquare = $.bindVerger(function(elem) {
