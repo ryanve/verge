@@ -131,7 +131,7 @@ Convert a function into a filter for the specified wrapper. It binds a filter fu
                                                 Otherwise the new function will return an array.
 ```
 
-**Contrived example**: create a method that filters out non-sqaure elements:
+**Contrived example**: create a method that filters out non-square elements:
 
 ```js
 $.fn.isSquare = $.bindVerger(function(elem) {
@@ -146,7 +146,7 @@ Then `$.fn.isSquare` could be used like so:
 $('div').isSquare() // contains only divs that are square
 ```
 
-The `bindVerger` method is used internally to convert the top-level boolean forms of `inX` / `inY` / `inViewport` into their corresponding effin filters. For them, the `option` parameter is utilized for the specifying the verge amount. Custom functions can utilize the `option` parameter as they see fit. The signature of the new function is like that of `$.fn.inViewport()` described above—including the abilty to invert via the second parameter.
+The `bindVerger` method is used internally to convert the top-level boolean forms of `inX` / `inY` / `inViewport` into their corresponding effin filters. For them, the `option` parameter is utilized for the specifying the verge amount. Custom functions can utilize the `option` parameter as they see fit. The signature of the new function is like that of `$.fn.inViewport()` described above—including the abilty to invert via the second parameter. See the source for more info.
 
 
 ### verge.bridge()
