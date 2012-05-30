@@ -9,12 +9,12 @@ To simplify the docs below, let `$` represent `verge` or the host lib.
 
 ## chainable
 
-The chainable versions of `inX`/`inY`/`inViewport` are **filters** designed for use with jQuery (or jQuery-compatible hosts). All three use the same signature: `$(elems).inY(verge, invert)` where both parameters are optional:
+The chainable versions of `.inX()` / `.inY()` / `.inViewport()` are **filters** designed for use with jQuery (or compatible hosts). All three use the same signature: `$(elems).inY(verge, invert)` where both params are optional:
 
 ```js
-@param {number=}   verge    is an optional cushion amount in pixels to surround the
-                            element in question. (default: 0)
-@param {boolean=}  invert   when set to true, will invert the filter. (default: false)
+// @param {number=}   verge    is an optional cushion amount in pixels to surround the
+//                             element in question. (default: 0)
+// @param {boolean=}  invert   when set to true, will invert the filter. (default: false)
 ```
 
 ### $.fn.inViewport()
@@ -73,7 +73,7 @@ $.viewportH()            // Get the current viewport height (in pixels).
 
 ### $.inViewport()
 
-Test if any part of an element (or the first element in a matched set) is in the current viewport. Returns boolean.
+Test if any part of an element (or the first element in a matched set) is in the current viewport. Returns **boolean**.
 
 ```js
 $.inViewport(elem)       // true if elem is in the current viewport
@@ -89,7 +89,7 @@ $.inViewport(elem) === $.inX(elem) && $.inY(elem) // always true
 
 ### $.inX()
 
-Test if any part of an element (or the first element in a matched set) is in the same x-axis section as the viewport. Returns boolean. 
+Test if any part of an element (or the first element in a matched set) is in the same x-axis section as the viewport. Returns **boolean**. 
 
 ```js
 $.inX(elem)       // true if elem is in same x-axis as the viewport (exact)
