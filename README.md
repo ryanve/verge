@@ -57,6 +57,17 @@ $('div').inY(0, true) // contains div's outside the y-axis section that the view
 verge.inY.call($('div')) // get *array* that contains div's in the same y-axis section as the viewport
 ```
 
+### $.fn.rectangle()
+
+Get an element's (or the first element in a set's) rectangle **object** containing the properties `top`, `bottom`, `left`, `right`, `width`, and `height` with respect to the top-left corner of the current viewport, and with an optional verge amount. 
+
+```js
+$(elem).rectangle()        // returns object
+$(elem, verge).rectangle() // returns object adjusted by verge
+```
+
+See full details in the docs for the top-level `$.rectangle()` method. (This is the chainable form of that.)
+
 ## top-level
 
 ### $.viewportW()
