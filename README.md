@@ -122,15 +122,13 @@ $.rectangle(elem, 100)  // get elem's rectangle object adjusted by 100 pixels
 
 Convert a function into a filter for the specified wrapper. It binds a filter function to a wrapper and returns the bound function. The resulting method will be [faster](http://jsperf.com/bind-verger) than manually filtering via `$.fn.filter()` or `$.fn.not()`
 
-```js
-/**
- * @param  {function(elem [, option])}  fn         the function to convert
- * @param  {Object|function|null}       wrapper    the object or function to bind to (e.g. jQuery). 
- *                                                 (Default: `this`) If the wrapper is a function 
- *                                                 like the jQuery function, then the return of the 
- *                                                 new function would be an instanceof the wrapper.
- *                                                 Otherwise the new function will return an array.
- */
+```
+@param  {function(elem [, option])}  fn         the function to convert
+@param  {Object|function|null}       wrapper    the object or function to bind to (e.g. jQuery). 
+                                                (Default: `this`) If the wrapper is a function 
+                                                like the jQuery function, then the return of the 
+                                                new function would be an instanceof the wrapper.
+                                                Otherwise the new function will return an array.
 ```
 
 **Contrived example**: create a method that filters out non-sqaure elements:
