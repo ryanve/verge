@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "homepage": "https://github.com/ryanve/verge",
     "author": "Ryan Van Etten <@ryanve>",
-    "keywords": ["ender", "viewport", "dimensions", "jquery", "filters"],
+    "keywords": ["ender", "viewport", "dimensions", "jquery", "filters", "dom"],
     "main": "./verge.js",
     "ender": "noop",
     "repository": {

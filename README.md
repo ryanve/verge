@@ -110,7 +110,7 @@ $.inX(elem, -100) // true if elem in is the viewport and not within 99px of the 
 
 ### $.inY()
 
-Test if any part of an element (or the first element in a matched set) is in the same y-axis section as the viewport. Returns boolean.
+Test if any part of an element (or the first element in a matched set) is in the same y-axis section as the viewport. Returns **boolean**.
 
 ```js
 $.inY(elem)       // true if elem is in same y-axis as the viewport (exact)
@@ -128,6 +128,8 @@ The optional `verge` parameter is an amount of pixels to act as a cushion around
 $.rectangle(elem)       // get elem's rectangle object
 $.rectangle(elem, 100)  // get elem's rectangle object adjusted by 100 pixels
 ```
+
+Most browsers round the rectangle's values to the nearest pixel. Firefox returns them as floats accurate to several decimals. I opted not to normalize this minor difference in favor of better [performance](http://jsperf.com/rectangle). Use [.toFixed()](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number/toFixed) if you need to round them. 
 
 ### $.bindVerger()
 
@@ -147,6 +149,7 @@ Convert a function into a filter for the specified wrapper. It binds a filter fu
 ```js
 $.fn.isSquare = $.bindVerger(function(elem) {
 	var dims = $.rectangle(elem);
+	// To pass, width must be non-zero and match height:
 	return !!dims.width && dims.width === dims.height;
 }, $);
 ```
