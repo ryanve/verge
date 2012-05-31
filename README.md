@@ -148,10 +148,10 @@ Convert a function into a filter for the specified wrapper. It binds a filter fu
 
 ```js
 $.fn.isSquare = $.bindVerger(function(elem) {
-	var dims = $.rectangle(elem);
 	// To pass, width must be non-zero and match height:
+	var dims = $.rectangle(elem);
 	return !!dims.width && dims.width === dims.height;
-}, $);
+});
 ```
 
 Then `$.fn.isSquare` could be used like so:
