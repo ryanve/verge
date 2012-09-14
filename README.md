@@ -1,74 +1,29 @@
 [verge](http://github.com/ryanve/verge)
 =======
 
-[verge](http://github.com/ryanve/verge) provides viewport utils and area filters that work as a standalone lib or as a jQuery plugin. 
+[verge](http://github.com/ryanve/verge) is a compact (<1k gzipped) set of cross-browser viewport utilities—inluding the ability to detect if an element is in the current viewport. [verge](http://github.com/ryanve/verge) works as a standalone module or as a plugin.
 
-# Methods
+## installation
 
-To simplify the docs below, let `$` represent `verge` or the host lib.
-
-## chainable
-
-The effin versions of `inX` / `inY` / `inViewport` are **filters** designed for jQuery (or compatible hosts). All three use the same signature: `$(elems).inY(verge, invert)` where both params are optional:
-
-```
-@param {number=}   verge    is an optional cushion amount in pixels to surround the
-                            element in question. (default: 0)
-@param {boolean=}  invert   when set to true, will invert the filter. (default: false)
-```
-
-### $.fn.inViewport()
-
-Filter a matched set so that it contains only elements that are in the current viewport. An element is considered in the viewport if at least one pixel of it is in the viewport. Returns the filtered set (e.g. jQuery object). 
+#### [jQuery](http://jquery.com)
 
 ```js
-$('div').inViewport()     // contains div's in the viewport (exact)
-$('div').inViewport(100)  // contains div's in the viewport or within 100px of it
-$('div').inViewport(-100) // contains div's in the viewport and not w/in 99px of the edge
-$('div').inViewport(0, true) // contains div's that are *not* in the viewport (exact)
+jQuery.extend(verge); // augment jQuery with methods from verge
 ```
 
-Using the standalone `verge` object, it is also possible to filter an element array (or array-like object) into a new **array** like so:
+#### [NPM](https://npmjs.org/package/verge)
 
-```js
-// Get array that only contains elems in the current viewport:
-verge.inViewport.call(elementArray [, verge, invert])
+```
+$ npm install verge
 ```
 
-### $.fn.inX()
+## API [(1.5.0)](https://github.com/ryanve/verge/blob/master/$.js#files) 
 
-Filter a matched set so that it contains only elements that are in the current viewport. Returns the filtered set (e.g. jQuery object). 
+### notes
 
-```js
-$('div').inX()     // contains div's in the same x-axis section as the viewport
-$('div').inX(100)  // contains div's in the same x-axis section as the viewport or w/in 100px of it
-$('div').inX(0, true) // contains div's outside the y-axis section that the viewport in in (exact)
-verge.inX.call($('div')) // get *array* that contains div's in the same x-axis section as the viewport
-```
+In standalone usage, methods are available on the **verge** namespace: `verge.scrollY()`, ...
 
-### $.fn.inY()
-
-Filter a matched set so that it contains only elements that are in the current viewport. Returns the filtered set (e.g. jQuery object). 
-
-```js
-$('div').inY()     // contains div's in the same y-axis section as the viewport
-$('div').inY(100)  // contains div's in the same y-axis section as the viewport or w/in 100px of it
-$('div').inY(0, true) // contains div's outside the y-axis section that the viewport in in (exact)
-verge.inY.call($('div')) // get *array* that contains div's in the same y-axis section as the viewport
-```
-
-### $.fn.rectangle()
-
-Get an element's (or the first element in a set's) rectangle **object** containing the properties `top`, `bottom`, `left`, `right`, `width`, and `height` with respect to the top-left corner of the current viewport, and with an optional verge amount. 
-
-```js
-$(elem).rectangle()        // returns object
-$(elem, verge).rectangle() // returns object adjusted by verge
-```
-
-See full details in the docs for the top-level `$.rectangle()` method. (This is the chainable form of that.)
-
-## top-level
+The docs below use `$` to denote `verge` or a host lib (like jQuery).
 
 ### $.viewportW()
 
@@ -92,7 +47,7 @@ $.inViewport(elem, 100)  // true if elem is in the current viewport or within 10
 $.inViewport(elem, -100) // true if elem is in the current viewport and not within 99px of the edge
 ```
 
-If you're dealing with a page that only ever scrolls in one direction, it is slightly faster to substitute `inViewport` with `inY` or `inX`. (On pages that **never** scroll horizontally, `inX` always returns `true`. On pages that **never** scroll vertically, `inY` always returns `true`.)
+**Tip:** If you're dealing with a page that only ever scrolls in one direction, it is faster to substitute `inViewport` with `inY` or `inX`. On pages that **never** scroll horizontally, `inX` always returns `true`. On pages that **never** scroll vertically, `inY` always returns `true`. In other words, use `inY` on sites that scroll **only** vertically, and `inX` on sites that scroll **only** horizontally. If the viewport width is greater than or equal to the `document` width, then `inX` will always return `true`.
 
 ```js
 $.inViewport(elem) === $.inX(elem) && $.inY(elem) // always true
@@ -129,79 +84,12 @@ $.rectangle(elem)       // get elem's rectangle object
 $.rectangle(elem, 100)  // get elem's rectangle object adjusted by 100 pixels
 ```
 
-Most browsers round the rectangle's values to the nearest pixel. Firefox returns them as floats accurate to several decimals. I opted not to normalize this minor difference in favor of better [performance](http://jsperf.com/rectangle). Use [.toFixed()](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number/toFixed) if you need to round them. 
+## libs that use verge 
 
-### $.bindVerger()
-
-Convert a function into a filter for the specified wrapper. It binds a filter function to a wrapper and returns the bound function. The resulting method will be [faster](http://jsperf.com/bind-verger) than manually filtering via `$.fn.filter()` or `$.fn.not()`
-
-```
-@param  {function(elem [, option])}  fn         the function to convert
-@param  {Object|function|null}       wrapper    the object or function to bind to (e.g. jQuery). 
-                                                (Default: `this`) If the wrapper is a function 
-                                                like the jQuery function, then the return of the 
-                                                new function would be an instanceof the wrapper.
-                                                Otherwise the new function will return an array.
-```
-
-**Contrived example**: create a method that filters out non-square elements:
-
-```js
-$.fn.isSquare = $.bindVerger(function(elem) {
-	// To pass, width must be non-zero and match height:
-	var dims = $.rectangle(elem);
-	return !!dims.width && dims.width === dims.height;
-});
-```
-
-Then `$.fn.isSquare` could be used like so:
-
-```js
-$('div').isSquare() // contains only divs that are square
-```
-
-The `bindVerger` method is used internally to convert the top-level boolean forms of `inX` / `inY` / `inViewport` into their corresponding effin filters. For them, the `option` parameter is utilized for the specifying the verge amount. Custom functions can utilize the `option` parameter as they see fit. The signature of the new function is like that of `$.fn.inViewport()` described above—including the abilty to invert via the second parameter. See the source for more info.
+[Response JS](https://github.com/ryanve/response.js)
 
 
-### verge.bridge()
-
-The bridge handles the integration of methods into a host. It augments the host with the above-detailed methods. If a host is detected at runtime, the bridge will run once automatically. Existing methods on the host are **not** overwritten unless the 2nd param is set to `true`.
-
-```js
-verge.bridge(host)       // integrate verge into host (existing methods are not overwritten)
-verge.bridge(host, true) // integrate verge into host (overwriting existing methods, if any)
-```
-
-```js
-verge.bridge(jQuery)     // integrate verge's methods into jQuery
-verge.bridge(ender)      // integrate verge's methods into ender
-```
-
-### verge.noConflict()
-
-Destroy the global `verge` and return `verge`. Optionally call a function that gets `verge` supplied as the first arg.
-
-```js
-verge.noConflict(); // simply destroys the global
-```
-
-```js
-verge.noConflict(function(verge){  
-  /* use verge in here */  
-});
-```
-
-# [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) usage
-
-```js
-define('verge', verge.noConflict); // define the module and simultaneously destroy the global
-```
-
-```js
-define('verge', function(){ return verge; }); // define the module and keep the global too
-```
-
-# License
+## license
 
 ### [verge](http://github.com/ryanve/verge) is available under the [MIT license](http://en.wikipedia.org/wiki/MIT_License)
 
