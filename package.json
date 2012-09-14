@@ -1,10 +1,10 @@
 {
     "name": "verge",
-    "description": "viewport dimensions and area-based filters",
-    "version": "1.0.0",
+    "description": "viewport utilities",
+    "version": "1.5.0",
     "homepage": "https://github.com/ryanve/verge",
     "author": "Ryan Van Etten <@ryanve>",
-    "keywords": ["ender", "jquery", "viewport", "dimensions", "filters", "dom", "javascript", "js"],
+    "keywords": ["viewport", "dimensions", "responsive", "ender", "jam", "jquery", "javascript", "js"],
     "main": "./verge.js",
     "ender": "noop",
     "repository": {
