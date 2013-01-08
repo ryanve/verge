@@ -1,7 +1,7 @@
 {
     "name": "verge",
     "description": "viewport utilities",
-    "version": "1.5.0",
+    "version": "1.5.1",
     "homepage": "https://github.com/ryanve/verge",
     "author": "Ryan Van Etten <@ryanve>",
     "keywords": ["viewport", "dimensions", "responsive", "ender", "jam", "jquery", "javascript", "js"],

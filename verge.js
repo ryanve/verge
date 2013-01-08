@@ -5,7 +5,7 @@
  * @author      Ryan Van Etten (c) 2012
  * @link        github.com/ryanve/verge
  * @license     MIT
- * @version     1.5.0
+ * @version     1.5.1
  */
 
 /*jslint browser: true, devel: true, node: true, passfail: false, bitwise: true
@@ -13,13 +13,17 @@
 , nomen: true, plusplus: true, regexp: true, undef: true, sloppy: true, stupid: true
 , sub: true, white: true, indent: 4, maxerr: 180 */
 
-(function (root, factory) {
-    if ( typeof module != 'undefined' && module.exports ) { module.exports = factory(); } // node
-    else { root['verge'] = factory(); } // browser
-}(this, function () {
+(function (root, name, definition) {// github.com/umdjs/umd
+    if ( typeof module != 'undefined' && module.exports ) {
+        module.exports = definition();    // common / node / ender
+    } else { root[name] = definition(); } // browser
+}(this, 'verge', function () {
 
     var win = window
       , docElem = document.documentElement
+      , matchMedia = win['matchMedia'] || win['msMatchMedia']
+      , viewportW
+      , viewportH
       , xports = {}
       , effins = {};
 
@@ -30,10 +34,14 @@
      * @link           quirksmode.org/mobile/viewports2.html
      * @return         {number}
      */
-    function viewportW() {
-        return docElem.clientWidth; 
-    }
-    xports['viewportW'] = viewportW;
+    xports['viewportW'] = viewportW = (function (win, docElem, mM) {
+        var client = docElem['clientWidth']
+          , inner = win['innerWidth'];
+        return ( mM && client < inner && true === mM('(min-width:' + inner + 'px)')['matches']
+            ? function () { return win['innerWidth']; }
+            : function () { return docElem['clientWidth']; }
+        );
+    }(win, docElem, matchMedia));
 
     /** 
      * $.viewportH()   Get the viewport height. (layout viewport)
@@ -42,10 +50,14 @@
      * @link           quirksmode.org/mobile/viewports2.html
      * @return         {number}
      */
-    function viewportH() {
-        return docElem.clientHeight; 
-    }
-    xports['viewportH'] = viewportH;
+    xports['viewportH'] = viewportH = (function (win, docElem, mM) {
+        var client = docElem['clientHeight']
+          , inner = win['innerHeight'];
+        return ( mM && client < inner && true === mM('(min-height:' + inner + 'px)')['matches']
+            ? function () { return win['innerHeight']; }
+            : function () { return docElem['clientHeight']; }
+        );
+    }(win, docElem, matchMedia));
     
     /** 
      * $.scrollX()  Cross-browser version of window.scrollX
