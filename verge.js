@@ -3,7 +3,7 @@
  * @author      Ryan Van Etten (c) 2012
  * @link        github.com/ryanve/verge
  * @license     MIT
- * @version     1.5.1
+ * @version     1.5.2
  */
 
 /*jslint browser: true, devel: true, node: true, passfail: false, bitwise: true
