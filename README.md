@@ -1,7 +1,7 @@
 [verge](http://github.com/ryanve/verge)
 =======
 
-[verge](http://github.com/ryanve/verge) is a compact (<1k gzipped) set of cross-browser viewport utilities—inluding the ability to detect if an element is in the current viewport. [verge](http://github.com/ryanve/verge) works as a standalone module or as a plugin.
+[verge](http://github.com/ryanve/verge) is a compact (<1k gzipped) set of cross-browser viewport utilities written in native JavaScript. It inludes the ability to detect if an element is in the current viewport. It works as a standalone module, an [ender](http://ender.jit.su) module, or as a [jQuery](http://jquery.com) plugin.
 
 ## installation
 
@@ -17,13 +17,13 @@ jQuery.extend(verge); // augment jQuery with methods from verge
 $ npm install verge
 ```
 
-## API [(1.5.0)](https://github.com/ryanve/verge/blob/master/$.js#files) 
+## methods [(1.5)](https://github.com/ryanve/verge/blob/master/CHANGELOG.md)
 
 ### notes
 
 In standalone usage, methods are available on the **verge** namespace: `verge.scrollY()`, ...
 
-The docs below use `$` to denote `verge` or a host lib (like jQuery).
+The docs below use `$` to denote `verge` or a host lib (like jQuery or ender).
 
 ### $.viewportW()
 
