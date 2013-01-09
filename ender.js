@@ -1,2 +1,4 @@
-// bridge (integration) file for ender.no.de
-( ender.ender( require('verge') ) );
+/* bridge (integration) for ender.jit.su */
+(function ($, name) {
+    $ && $.ender(require(name));
+}(this.ender, 'verge'));
