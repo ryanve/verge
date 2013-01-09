@@ -1,7 +1,5 @@
 /*!
- * verge        viewport utils and area filters that work
- *              as a standalone lib or as a jQuery plugin
- * 
+ * verge        viewport utilities module
  * @author      Ryan Van Etten (c) 2012
  * @link        github.com/ryanve/verge
  * @license     MIT
@@ -124,7 +122,8 @@
      * @param   {Object}   el
      * @return  {Object|undefined}
      */
-    function offset (el) {
+    /* not exposed / not needed
+     function offset (el) {
         var x, y, o = rectangle(el);
         if ( o ) {
             x = scrollX() - (docElem.clientLeft || 0);
@@ -136,7 +135,8 @@
         }
         return o;
     }
-    // xports['offset'] = offset;
+    xports['offset'] = offset;
+    */
 
     /**
      * $.inX()             Determine if an element is in the same section 
@@ -190,37 +190,6 @@
     // effins['offset'] = function() {
     //     return offset(this);
     // };
-    
-    /**
-     * verge.bridge()    Integrate applicable methods|objects into a host.
-     *                   Other types (number|string|undefined|boolean|null)
-     *                   are not bridged. `this` augments the receiver `r`
-     * @this  {Object|Function}           supplier
-     * @param {Object|Function}    r      receiver
-     * @param {boolean=}           force  whether to overwrite existing props (default: false)
-     */
-    function bridge ( r, force ) {
-
-        var k, relay, s = this; // s is the supplier
-        if ( r == null || s == null || s == win ) { return; }
-        force = true === force; // require explicit true to force
-
-        for ( k in s ) {
-            if ( typeof s[k] == 'function' && s[k]['relay'] !== false ) {
-                if ( force || r[k] == null ) {
-                    r[k] = s[k];
-                }
-            }
-        }
-        
-        r['fn'] && bridge.call(effins, r['fn'], force);
-        
-        return r; // receiver
-
-    }// bridge
-    
-    bridge['relay'] = false;
-    // xports['bridge'] = bridge;
 
     // expose effins:
     // xports['fn'] = effins;
