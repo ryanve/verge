@@ -1,7 +1,7 @@
 [verge](http://github.com/ryanve/verge)
 =======
 
-[verge](http://github.com/ryanve/verge) is a compact (<1k gzipped) set of cross-browser viewport utilities written in native JavaScript. It inludes the ability to detect if an element is in the current viewport. It works as a standalone module, an [ender](http://ender.jit.su) module, or as a [jQuery](http://jquery.com) plugin.
+[verge](http://github.com/ryanve/verge) is a compact (<1k gzipped) set of cross-browser viewport utilities written in native JavaScript. It includes the ability to detect if an element is in the current viewport. It works as a standalone module, an [ender](http://ender.jit.su) module, or as a [jQuery](http://jquery.com) plugin.
 
 ## installation
 
