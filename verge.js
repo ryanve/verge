@@ -3,7 +3,7 @@
  * @author      Ryan Van Etten (c) 2012
  * @link        github.com/ryanve/verge
  * @license     MIT
- * @version     1.5.2
+ * @version     1.5.3
  */
 
 /*jslint browser: true, devel: true, node: true, passfail: false, bitwise: true
@@ -92,17 +92,17 @@
      * @since   1.0.0 
      * @param   {Object|Array} el      native element or matched set (defaults to first elem)
      * @param   {number=}      verge   see #verge
-     * @param   {(Object|*)=}  voidO   if `voidO` is truthy, `verge` defaults back to 0. The 
+     * @param   {*=}           nix     if `nix` is truthy, the `verge` amount resets to 0. The 
      *                                 purpose of this is so that you can use $.rectangle more 
      *                                 easily with iterators that use the v/i/o signature.
      * 
      * @return  {Object|undefined}     object containing coords (`undefined` if `el` is invalid)
      */
-    function rectangle (el, verge, voidO) {
+    function rectangle (el, verge, nix) {
         var r, o;
         el = el && (el.nodeType ? el : el[0]); // isolate node
         if ( el && 1 === el.nodeType ) {
-            verge = typeof verge == 'number' && verge && !voidO ? verge : 0;
+            verge = typeof verge == 'number' && verge && !nix ? verge : 0;
             r = el.getBoundingClientRect(); // read-only
             o = {};
             o['top']    = r['top'] - verge;
