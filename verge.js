@@ -1,8 +1,8 @@
 /*!
  * verge        viewport utilities module
- * @author      Ryan Van Etten (c) 2012
- * @link        github.com/ryanve/verge
+ * @link        verge.airve.com
  * @license     MIT
+ * @copyright   2012 Ryan Van Etten
  * @version     1.5.3
  */
 
