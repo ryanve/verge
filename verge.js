@@ -13,7 +13,7 @@
 
 (function (root, name, definition) {// github.com/umdjs/umd
     if ( typeof module != 'undefined' && module.exports ) {
-        module.exports = definition();    // common / node / ender
+        module.exports = definition(); // common|node|ender
     } else { root[name] = definition(); } // browser
 }(this, 'verge', function () {
 
@@ -115,6 +115,10 @@
         return o;
     }
     xports['rectangle'] = rectangle;
+    effins['rectangle'] = function (verge) {
+        return rectangle(this, verge);
+    };
+    
 
     /** 
      * $.offset                     same effect as the getter form of jQuery.fn.offset
@@ -136,6 +140,9 @@
         return o;
     }
     xports['offset'] = offset;
+    effins['offset'] = function() {
+        return offset(this);
+    };
     */
 
     /**
@@ -181,19 +188,7 @@
     }
     xports['inViewport'] = inViewport;
 
-
-    // Create fn.rectangle and fn.offset
-    effins['rectangle'] = function (verge) {
-        return rectangle(this, verge);
-    };
-    
-    // effins['offset'] = function() {
-    //     return offset(this);
-    // };
-
-    // expose effins:
     // xports['fn'] = effins;
-
     return xports;
 
 }));
