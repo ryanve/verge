@@ -24,19 +24,19 @@
       , media = matchMedia || function() {
             return new Boolean(false);
         }
+      , mq = Modernizr && Modernizr['mq'] || function(mq) {
+            return !!media(mq).matches;
+        }
       , viewportW
       , viewportH
       , xports = {}
       , effins = {};
-      
+    
+    xports['mq'] = mq;
     xports['matchMedia'] = matchMedia ? function() {
         // matchMedia must be binded to window
         return matchMedia.apply(win, arguments);
     } : media;
-
-    xports['mq'] = Modernizr && Modernizr['mq'] || function(mq) {
-        return !!media(mq).matches;
-    };
 
     /** 
      * $.viewportW()   Get the viewport width. (layout viewport)
@@ -45,14 +45,14 @@
      * @link           quirksmode.org/mobile/viewports2.html
      * @return         {number}
      */
-    xports['viewportW'] = viewportW = (function (win, docElem, mM) {
-        var client = docElem['clientWidth']
-          , inner = win['innerWidth'];
-        return ( mM && client < inner && true === mM('(min-width:' + inner + 'px)')['matches']
-            ? function () { return win['innerWidth']; }
-            : function () { return docElem['clientWidth']; }
-        );
-    }(win, docElem, matchMedia));
+    xports['viewportW'] = viewportW = (function(win, docElem, mq) {
+        var inner = win['innerWidth'];
+        return inner > docElem['clientWidth'] && mq('(min-width:' + inner + 'px)') ? function() { 
+            return win['innerWidth']; 
+        } : function() {
+            return docElem['clientWidth']; 
+        };
+    }(win, docElem, mq));
 
     /** 
      * $.viewportH()   Get the viewport height. (layout viewport)
@@ -61,14 +61,14 @@
      * @link           quirksmode.org/mobile/viewports2.html
      * @return         {number}
      */
-    xports['viewportH'] = viewportH = (function (win, docElem, mM) {
-        var client = docElem['clientHeight']
-          , inner = win['innerHeight'];
-        return ( mM && client < inner && true === mM('(min-height:' + inner + 'px)')['matches']
-            ? function () { return win['innerHeight']; }
-            : function () { return docElem['clientHeight']; }
-        );
-    }(win, docElem, matchMedia));
+    xports['viewportH'] = viewportH = (function (win, docElem, mq) {
+        var inner = win['innerHeight'];
+        return inner > docElem['clientHeight'] && mq('(min-height:' + inner + 'px)') ? function() {
+            return win['innerHeight']; 
+        } : function() {
+            return docElem['clientHeight']; 
+        };
+    }(win, docElem, mq));
     
     /** 
      * $.scrollX()  Cross-browser version of window.scrollX
