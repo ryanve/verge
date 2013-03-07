@@ -118,32 +118,6 @@
     effins['rectangle'] = function (verge) {
         return rectangle(this, verge);
     };
-    
-
-    /** 
-     * $.offset                     same effect as the getter form of jQuery.fn.offset
-     * @since   1.1.0
-     * @param   {Object}   el
-     * @return  {Object|undefined}
-     */
-    /* not exposed / not needed
-     function offset (el) {
-        var x, y, o = rectangle(el);
-        if ( o ) {
-            x = scrollX() - (docElem.clientLeft || 0);
-            y = scrollY() - (docElem.clientTop || 0);
-            o['top']    += y;
-            o['left']   += x;
-            o['bottom'] += y;
-            o['right']  += x;
-        }
-        return o;
-    }
-    xports['offset'] = offset;
-    effins['offset'] = function() {
-        return offset(this);
-    };
-    */
 
     /**
      * $.inX()             Determine if an element is in the same section 
