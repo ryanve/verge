@@ -3,7 +3,7 @@
  * @link        verge.airve.com
  * @license     MIT
  * @copyright   2012 Ryan Van Etten
- * @version     1.5.3
+ * @version     1.6.0-pre
  */
 
 /*jslint browser: true, devel: true, node: true, passfail: false, bitwise: true
@@ -19,11 +19,24 @@
 
     var win = window
       , docElem = document.documentElement
+      , Modernizr = win['Modernizr']
       , matchMedia = win['matchMedia'] || win['msMatchMedia']
+      , media = matchMedia || function() {
+            return new Boolean(false);
+        }
       , viewportW
       , viewportH
       , xports = {}
       , effins = {};
+      
+    xports['matchMedia'] = matchMedia ? function() {
+        // matchMedia must be binded to window
+        return matchMedia.apply(win, arguments);
+    } : media;
+
+    xports['mq'] = Modernizr && Modernizr['mq'] || function(mq) {
+        return !!media(mq).matches;
+    };
 
     /** 
      * $.viewportW()   Get the viewport width. (layout viewport)
