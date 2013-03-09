@@ -66,20 +66,18 @@
      * @since   1.0.0
      * @return  {number}
      */
-    function scrollX() {
+    xports['scrollX'] = function() {
         return win.pageXOffset || docElem.scrollLeft; 
-    }
-    xports['scrollX'] = scrollX;
+    };
 
     /** 
      * Cross-browser version of window.scrollY
      * @since   1.0.0
      * @return  {number}
      */
-    function scrollY() {
+    xports['scrollY'] = function() {
         return win.pageYOffset || docElem.scrollTop; 
-    }
-    xports['scrollY'] = scrollY;
+    };
 
     /** 
      * Cross-browser element.getBoundingClientRect plus optional cushion. Coords are 
@@ -110,11 +108,10 @@
      * @param   {number=}  cushion
      * @return  {boolean}
      */
-    function inX(el, cushion) {
+    xports['inX'] = function(el, cushion) {
         var r = rectangle(el, cushion);
         return !!r && r.right >= 0 && r.left <= viewportW();
-    }
-    xports['inX'] = inX;
+    };
 
     /**
      * Determine if an element is in the same section 
@@ -124,11 +121,10 @@
      * @param   {number=}  cushion
      * @return  {boolean}
      */
-    function inY(el, cushion) {
+    xports['inY'] = function(el, cushion) {
         var r = rectangle(el, cushion);
         return !!r && r.bottom >= 0 && r.top <= viewportH();
-    }
-    xports['inY'] = inY;
+    };
 
     /**
      * Determine if an element is in the current viewport.
@@ -137,13 +133,12 @@
      * @param   {number=}  cushion
      * @return  {boolean}
      */
-    function inViewport(el, cushion) {
+    xports['inViewport'] = function(el, cushion) {
         // Equiv to `inX(el, cushion) && inY(el, cushion)` but just manually do both 
         // to avoid calling rectangle() twice. It gzips just as small like this.
         var r = rectangle(el, cushion);
         return !!r && r.bottom >= 0 && r.right >= 0 && r.top <= viewportH() && r.left <= viewportW();
-    }
-    xports['inViewport'] = inViewport;
+    };
 
     return xports;
 
