@@ -3,7 +3,7 @@
  * @link        verge.airve.com
  * @license     MIT
  * @copyright   2012 Ryan Van Etten
- * @version     1.6.1
+ * @version     1.6.2
  */
 
 /*jslint browser: true, devel: true, node: true, passfail: false, bitwise: true
@@ -36,7 +36,7 @@
         // matchMedia must be binded to window
         return matchMedia.apply(win, arguments);
     } : function() {
-        return new Boolean(false);
+        return {};
     };
 
     /** 
