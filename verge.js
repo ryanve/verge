@@ -82,84 +82,69 @@
     }
     xports['scrollY'] = scrollY;
 
-    // The #verge is the amount of pixels to act as a cushion around the viewport. It can be
-    // any number. If the verge is zero, then the inX/inY/inViewport methods are exact. If it
-    // is 100, then those methods return true when for elements that are are in the viewport 
-    // *or* near it, w/ *near* being defined as w/in 100 pixels outside the viewport edge.
-    // Elems just outside the viewport are 'on the verge' of being scrolled to.
-
     /** 
-     * $.rectangle()                 cross-browser element.getBoundingClientRect w/ optional 
-     *                               verge parameter. (see #verge) Coords given by rectangle
-     *                               are relative to the top-left corner of the viewport.
+     * Cross-browser element.getBoundingClientRect plus optional cushion. Coords are 
+     * relative to the top-left corner of the viewport.
      * @since  1.0.0
-     * @param  {Object|Array} el     native element or matched set (defaults to first elem)
-     * @param  {number=}      verge  see #verge
-     * @param  {*=}           nix    if `nix` is truthy, the `verge` amount resets to 0. The 
-     *                               purpose of this is so that you can use $.rectangle more 
-     *                               easily with iterators that use the v/i/o signature.
-     * @return {Object|undefined}    object containing coords (`undefined` if `el` is invalid)
+     * @param  {Object|Array} el       DOM element or collection (defaults to first item)
+     * @param  {number=}      cushion  +/- pixel amount to act as a cushion around the viewport
+     * @param  {*=}           nix      if truthy, assumes v/i/o iterator and `cushion` resets to 0
+     * @return {Object|undefined}
      */
-    function rectangle(el, verge, nix) {
-        var r, o;
-        el = el && (el.nodeType ? el : el[0]); // isolate node
-        if ( el && 1 === el.nodeType ) {
-            verge = typeof verge == 'number' && verge && !nix ? verge : 0;
-            r = el.getBoundingClientRect(); // read-only
-            o = {};
-            o['top']    = r['top'] - verge;
-            o['left']   = r['left'] - verge;
-            o['bottom'] = r['bottom'] + verge;
-            o['right']  = r['right'] + verge;
-            o['width']  = o['right'] - o['left']; // includes verge * 2
-            o['height'] = o['bottom'] - o['top']; // includes verge * 2
-        }
+    function rectangle(el, cushion, nix) {
+        var o = {};
+        el && !el.nodeType && (el = el[0]);
+        if (!el || 1 !== el.nodeType) { return; }
+        cushion = typeof cushion == 'number' && !nix && cushion || 0;
+        el = el.getBoundingClientRect(); // read-only
+        o['width'] = (o['right'] = el['right'] + cushion) - (o['left'] = el['left'] - cushion);
+        o['height'] = (o['bottom'] = el['bottom'] + cushion) - (o['top'] = el['top'] - cushion);
         return o;
     }
     xports['rectangle'] = rectangle;
-    effins['rectangle'] = function(verge) {
-        return rectangle(this, verge);
+    effins['rectangle'] = function(cushion) {
+        return rectangle(this, cushion);
     };
 
     /**
-     * $.inX()             Determine if an element is in the same section 
-     *                     of the x-axis as the current viewport is.
+     * Determine if an element is in the same section 
+     * of the x-axis as the current viewport is.
      * @since   1.0.0
      * @param   {Object}   el
-     * @param   {number=}  verge
+     * @param   {number=}  cushion
      * @return  {boolean}
      */
-    function inX(el, verge) {
-        var r = rectangle(el, verge);
+    function inX(el, cushion) {
+        var r = rectangle(el, cushion);
         return !!r && r.right >= 0 && r.left <= viewportW();
     }
     xports['inX'] = inX;
 
     /**
-     * $.inY()             Determine if an element is in the same section 
-     *                     of the y-axis as the current viewport is.
+     * Determine if an element is in the same section 
+     * of the y-axis as the current viewport is.
      * @since   1.0.0
      * @param   {Object}   el
-     * @param   {number=}  verge
+     * @param   {number=}  cushion
      * @return  {boolean}
      */
-    function inY(el, verge) {
-        var r = rectangle(el, verge);
+    function inY(el, cushion) {
+        var r = rectangle(el, cushion);
         return !!r && r.bottom >= 0 && r.top <= viewportH();
     }
     xports['inY'] = inY;
 
     /**
-     * $.inViewport()      Determine if an element is in the current viewport.
+     * Determine if an element is in the current viewport.
      * @since   1.0.0
      * @param   {Object}   el
-     * @param   {number=}  verge
+     * @param   {number=}  cushion
      * @return  {boolean}
      */
-    function inViewport(el, verge) {
-        // Equiv to `inX(el, verge) && inY(el, verge)` but just manually do both 
+    function inViewport(el, cushion) {
+        // Equiv to `inX(el, cushion) && inY(el, cushion)` but just manually do both 
         // to avoid calling rectangle() twice. It gzips just as small like this.
-        var r = rectangle(el, verge);
+        var r = rectangle(el, cushion);
         return !!r && r.bottom >= 0 && r.right >= 0 && r.top <= viewportH() && r.left <= viewportW();
     }
     xports['inViewport'] = inViewport;
