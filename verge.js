@@ -3,7 +3,7 @@
  * @link        verge.airve.com
  * @license     MIT
  * @copyright   2012 Ryan Van Etten
- * @version     1.6.2
+ * @version     1.6.3
  */
 
 /*jslint browser: true, devel: true, node: true, passfail: false, bitwise: true
@@ -17,9 +17,7 @@
     } else { root[name] = definition(); } // browser
 }(this, 'verge', function() {
 
-    var viewportW
-      , viewportH
-      , win = window
+    var win = window
       , docElem = document.documentElement
       , Modernizr = win['Modernizr']
       , matchMedia = win['matchMedia'] || win['msMatchMedia']
@@ -28,9 +26,20 @@
         } : function() {
             return false;
         }
+      , makeViewportGetter = function(dim, inner, client) {
+            // @link  responsejs.com/labs/dimensions/
+            // @link  quirksmode.org/mobile/viewports2.html
+            // @link  github.com/ryanve/response.js/issues/17
+            return (docElem[client] < win[inner] && mq('(min-' + dim + ':' + win[inner] + 'px)')
+                ? function() { return win[inner]; }
+                : function() { return docElem[client]; }
+            );
+        }
+      , viewportW = makeViewportGetter('width', 'innerWidth', 'clientWidth')
+      , viewportH = makeViewportGetter('height', 'innerHeight', 'clientHeight')
       , xports = {}
       , effins = {};
-
+      
     xports['mq'] = !matchMedia && Modernizr && Modernizr['mq'] || mq;
     xports['matchMedia'] = matchMedia ? function() {
         // matchMedia must be binded to window
@@ -40,41 +49,23 @@
     };
 
     /** 
-     * $.viewportW()   Get the viewport width. (layout viewport)
-     * @since          1.0.0
-     * @link           responsejs.com/labs/dimensions/#viewport
-     * @link           quirksmode.org/mobile/viewports2.html
-     * @return         {number}
+     * Get the layout viewport width.
+     * @since   1.0.0
+     * @return  {number}
      */
-    xports['viewportW'] = viewportW = (function(win, docElem, mq) {
-        var inner = win['innerWidth'];
-        return inner > docElem['clientWidth'] && mq('(min-width:' + inner + 'px)') ? function() { 
-            return win['innerWidth']; 
-        } : function() {
-            return docElem['clientWidth']; 
-        };
-    }(win, docElem, mq));
+    xports['viewportW'] = viewportW;
 
     /** 
-     * $.viewportH()   Get the viewport height. (layout viewport)
-     * @since          1.0.0
-     * @link           responsejs.com/labs/dimensions/#viewport
-     * @link           quirksmode.org/mobile/viewports2.html
-     * @return         {number}
+     * Get the layout viewport height.
+     * @since   1.0.0
+     * @return  {number}
      */
-    xports['viewportH'] = viewportH = (function(win, docElem, mq) {
-        var inner = win['innerHeight'];
-        return inner > docElem['clientHeight'] && mq('(min-height:' + inner + 'px)') ? function() {
-            return win['innerHeight']; 
-        } : function() {
-            return docElem['clientHeight']; 
-        };
-    }(win, docElem, mq));
+    xports['viewportH'] = viewportH;
     
     /** 
-     * $.scrollX()  Cross-browser version of window.scrollX
-     * @since       1.0.0
-     * @return      {number}
+     * Cross-browser version of window.scrollX
+     * @since   1.0.0
+     * @return  {number}
      */
     function scrollX() {
         return win.pageXOffset || docElem.scrollLeft; 
@@ -82,9 +73,9 @@
     xports['scrollX'] = scrollX;
 
     /** 
-     * $.scrollY()  Cross-browser version of window.scrollY
-     * @since       1.0.0
-     * @return      {number}
+     * Cross-browser version of window.scrollY
+     * @since   1.0.0
+     * @return  {number}
      */
     function scrollY() {
         return win.pageYOffset || docElem.scrollTop; 
