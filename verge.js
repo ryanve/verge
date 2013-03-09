@@ -37,8 +37,7 @@
         }
       , viewportW = makeViewportGetter('width', 'innerWidth', 'clientWidth')
       , viewportH = makeViewportGetter('height', 'innerHeight', 'clientHeight')
-      , xports = {}
-      , effins = {};
+      , xports = {};
       
     xports['mq'] = !matchMedia && Modernizr && Modernizr['mq'] || mq;
     xports['matchMedia'] = matchMedia ? function() {
@@ -102,9 +101,6 @@
         return o;
     }
     xports['rectangle'] = rectangle;
-    effins['rectangle'] = function(cushion) {
-        return rectangle(this, cushion);
-    };
 
     /**
      * Determine if an element is in the same section 
@@ -149,7 +145,6 @@
     }
     xports['inViewport'] = inViewport;
 
-    // xports['fn'] = effins;
     return xports;
 
 }));
