@@ -23,8 +23,8 @@
       , docElem = document.documentElement
       , Modernizr = win['Modernizr']
       , matchMedia = win['matchMedia'] || win['msMatchMedia']
-      , mq = matchMedia ? function(mq) {
-            return !!matchMedia.call(win, mq).matches;
+      , mq = matchMedia ? function(q) {
+            return !!matchMedia.call(win, q).matches;
         } : function() {
             return false;
         }
