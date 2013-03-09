@@ -38,8 +38,19 @@
       , viewportW = makeViewportGetter('width', 'innerWidth', 'clientWidth')
       , viewportH = makeViewportGetter('height', 'innerHeight', 'clientHeight')
       , xports = {};
-      
+    
+    /** 
+     * Test if a media query is active. (Fallback uses Modernizr if avail.)
+     * @since   1.6.0
+     * @return  {boolean}
+     */    
     xports['mq'] = !matchMedia && Modernizr && Modernizr['mq'] || mq;
+
+    /** 
+     * Normalized, gracefully-degrading matchMedia.
+     * @since   1.6.0
+     * @return  {Object}
+     */ 
     xports['matchMedia'] = matchMedia ? function() {
         // matchMedia must be binded to window
         return matchMedia.apply(win, arguments);
@@ -62,7 +73,7 @@
     xports['viewportH'] = viewportH;
     
     /** 
-     * Cross-browser version of window.scrollX
+     * Cross-browser window.scrollX
      * @since   1.0.0
      * @return  {number}
      */
@@ -71,7 +82,7 @@
     };
 
     /** 
-     * Cross-browser version of window.scrollY
+     * Cross-browser window.scrollY
      * @since   1.0.0
      * @return  {number}
      */
@@ -80,8 +91,8 @@
     };
 
     /** 
-     * Cross-browser element.getBoundingClientRect plus optional cushion. Coords are 
-     * relative to the top-left corner of the viewport.
+     * Cross-browser element.getBoundingClientRect plus optional cushion.
+     * Coords are relative to the top-left corner of the viewport.
      * @since  1.0.0
      * @param  {Object|Array} el       DOM element or collection (defaults to first item)
      * @param  {number=}      cushion  +/- pixel amount to act as a cushion around the viewport
@@ -101,8 +112,7 @@
     xports['rectangle'] = rectangle;
 
     /**
-     * Determine if an element is in the same section 
-     * of the x-axis as the current viewport is.
+     * Test if an element is in the same x-axis section as the viewport.
      * @since   1.0.0
      * @param   {Object}   el
      * @param   {number=}  cushion
@@ -114,8 +124,7 @@
     };
 
     /**
-     * Determine if an element is in the same section 
-     * of the y-axis as the current viewport is.
+     * Test if an element is in the same y-axis section as the viewport.
      * @since   1.0.0
      * @param   {Object}   el
      * @param   {number=}  cushion
@@ -127,7 +136,7 @@
     };
 
     /**
-     * Determine if an element is in the current viewport.
+     * Test if an element is in the viewport.
      * @since   1.0.0
      * @param   {Object}   el
      * @param   {number=}  cushion
@@ -141,5 +150,4 @@
     };
 
     return xports;
-
 }));
