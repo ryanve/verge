@@ -1,10 +1,10 @@
 {
     "name": "verge",
     "description": "viewport utilities module",
-    "version": "1.6.0",
+    "version": "1.6.1",
     "homepage": "http://verge.airve.com",
     "author": "Ryan Van Etten <ryanve@gmail.com> (http://ryanve.com)",
-    "keywords": ["viewport", "dimensions", "responsive", "ender"],
+    "keywords": ["viewport", "dimensions", "responsive", "media queries", "ender"],
     "main": "./verge.js",
     "ender": "./ender.js",
     "repository": {

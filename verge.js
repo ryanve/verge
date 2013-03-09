@@ -3,7 +3,7 @@
  * @link        verge.airve.com
  * @license     MIT
  * @copyright   2012 Ryan Van Etten
- * @version     1.6.0
+ * @version     1.6.1
  */
 
 /*jslint browser: true, devel: true, node: true, passfail: false, bitwise: true
@@ -12,8 +12,8 @@
 , sub: true, white: true, indent: 4, maxerr: 180 */
 
 (function(root, name, definition) {// github.com/umdjs/umd
-    if ( typeof module != 'undefined' && module.exports ) {
-        module.exports = definition(); // common|node|ender
+    if (typeof module != 'undefined' && module['exports']) {
+        module['exports'] = definition(); // common|node|ender
     } else { root[name] = definition(); } // browser
 }(this, 'verge', function() {
 
@@ -23,20 +23,21 @@
       , docElem = document.documentElement
       , Modernizr = win['Modernizr']
       , matchMedia = win['matchMedia'] || win['msMatchMedia']
-      , media = matchMedia || function() {
-            return new Boolean(false);
-        }
-      , mq = Modernizr && Modernizr['mq'] || function(mq) {
-            return !!media(mq).matches;
+      , mq = matchMedia ? function(mq) {
+            return !!matchMedia.call(win, mq).matches;
+        } : function() {
+            return false;
         }
       , xports = {}
       , effins = {};
-    
-    xports['mq'] = mq;
+
+    xports['mq'] = !matchMedia && Modernizr && Modernizr['mq'] || mq;
     xports['matchMedia'] = matchMedia ? function() {
         // matchMedia must be binded to window
         return matchMedia.apply(win, arguments);
-    } : media;
+    } : function() {
+        return new Boolean(false);
+    };
 
     /** 
      * $.viewportW()   Get the viewport width. (layout viewport)
@@ -94,7 +95,7 @@
     // any number. If the verge is zero, then the inX/inY/inViewport methods are exact. If it
     // is 100, then those methods return true when for elements that are are in the viewport 
     // *or* near it, w/ *near* being defined as w/in 100 pixels outside the viewport edge.
-    // Elems immediately outside the viewport are 'on the verge' of being scrolled to.
+    // Elems just outside the viewport are 'on the verge' of being scrolled to.
 
     /** 
      * $.rectangle()                 cross-browser element.getBoundingClientRect w/ optional 
