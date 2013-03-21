@@ -17,7 +17,7 @@ jQuery.extend(verge); // augment jQuery with methods from verge
 $ npm install verge
 ```
 
-## methods [(1.5)](https://github.com/ryanve/verge/blob/master/CHANGELOG.md)
+## methods [(1.6)](https://github.com/ryanve/verge/blob/master/CHANGELOG.md)
 
 ### notes
 
@@ -67,6 +67,15 @@ $.inX(elem, -100) // true if elem in is the viewport and not within 99px of the 
 
 Test if any part of an element (or the first element in a matched set) is in the same y-axis section as the viewport. Returns **boolean**.
 
+### $.mq()
+
+Test if a media query is active.
+
+```js
+$.mq(mediaQueryString)
+$.mq('(orientation:portrait)')
+```
+
 ```js
 $.inY(elem)       // true if elem is in same y-axis as the viewport (exact)
 $.inY(elem, 100)  // true if elem is in same y-axis as the viewport or within 100px of it
@@ -75,9 +84,9 @@ $.inY(elem, -100) // true if elem in is the viewport and not within 99px of the 
 
 ### $.rectangle()
 
-The `$.rectangle(elem [, verge])` method returns an a object containing the properties `top`, `bottom`, `left`, `right`, `width`, and `height` with respect to the top-left corner of the current viewport, and with an optional verge amount. Its return is like that of the native [getBoundingClientRect](https://developer.mozilla.org/en/DOM/element.getBoundingClientRect) (with the added assurance that all six properties will exist).
+The `$.rectangle(elem [, cushion])` method returns an a object containing the properties `top`, `bottom`, `left`, `right`, `width`, and `height` with respect to the top-left corner of the current viewport, and with an optional cushion amount. Its return is like that of the native [getBoundingClientRect](https://developer.mozilla.org/en/DOM/element.getBoundingClientRect) (with the added assurance that all six properties will exist).
 
-The optional `verge` parameter is an amount of pixels to act as a cushion around the element. If none is provided then it defaults to `0` and the rectangle will match the result of the native rectangle. If a verge is specified, the properties are adjusted according to the verge amount. If the verge is **positive** the rectangle will represent an area that is larger that the actual element. If the verge is **negative** then the rectangle will represent an area that is **smaller** that the actual element. 
+The optional `cushion` parameter is an amount of pixels to act as a cushion around the element. If none is provided then it defaults to `0` and the rectangle will match the result of the native rectangle. If a cushion is specified, the properties are adjusted according to the cushion amount. If the cushion is **positive** the rectangle will represent an area that is larger that the actual element. If the cushion is **negative** then the rectangle will represent an area that is **smaller** that the actual element. 
 
 ```js
 $.rectangle(elem)       // get elem's rectangle object
