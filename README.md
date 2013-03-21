@@ -75,7 +75,7 @@ $.inY(elem, -100) // true if elem in is the viewport and not within 99px of the 
 
 ### $.mq()
 
-Test if a media query is active.
+Test if a [media query](http://airve.com/mq/) is active.
 
 ```js
 $.mq(mediaQueryString)
