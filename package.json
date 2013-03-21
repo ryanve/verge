@@ -1,7 +1,7 @@
 {
     "name": "verge",
     "description": "viewport utilities module",
-    "version": "1.6.3",
+    "version": "1.7.0",
     "homepage": "http://verge.airve.com",
     "author": "Ryan Van Etten <ryanve@gmail.com> (http://ryanve.com)",
     "keywords": ["viewport", "dimensions", "responsive", "media queries", "ender"],

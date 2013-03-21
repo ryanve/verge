@@ -3,7 +3,7 @@
  * @link        verge.airve.com
  * @license     MIT
  * @copyright   2012 Ryan Van Etten
- * @version     1.7.0-pre
+ * @version     1.7.0
  */
 
 /*jslint browser: true, devel: true, node: true, passfail: false, bitwise: true
