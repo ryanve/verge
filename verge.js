@@ -114,7 +114,7 @@
         var o = {};
         el && !el.nodeType && (el = el[0]);
         if (!el || 1 !== el.nodeType) { return false; }
-        cushion = typeof cushion == 'number' && 2 == arguments.length && cushion || 0;
+        cushion = typeof cushion == 'number' && cushion || 0;
         el = el.getBoundingClientRect(); // read-only
         o['width'] = (o['right'] = el['right'] + cushion) - (o['left'] = el['left'] - cushion);
         o['height'] = (o['bottom'] = el['bottom'] + cushion) - (o['top'] = el['top'] - cushion);
@@ -124,6 +124,7 @@
     
     /**
      * Get the viewport aspect ratio (or the aspect ratio of an object or element)
+     * @since  1.7.0
      * @param  {Object=}  o    optional object with width/height props or methods
      * @return {number}
      * @link   w3.org/TR/css3-mediaqueries/#orientation
