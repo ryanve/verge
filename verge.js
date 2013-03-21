@@ -108,14 +108,14 @@
      * @since  1.0.0
      * @param  {Object|Array} el       DOM element or collection (defaults to first item)
      * @param  {number=}      cushion  +/- pixel amount to act as a cushion around the viewport
-     * @param  {*=}           nix      if truthy, assumes v/i/o iterator and `cushion` resets to 0
+     * @param  {Object=}      nix      voids cushion when scoped like arr.map(verge.rectangle, arr)
      * @return {Object|undefined}
      */
     function rectangle(el, cushion, nix) {
         var o = {};
         el && !el.nodeType && (el = el[0]);
-        if (!el || 1 !== el.nodeType) { return; }
-        cushion = typeof cushion == 'number' && !nix && cushion || 0;
+        if (!el || 1 !== el.nodeType) { return false; }
+        cushion = typeof cushion == 'number' && (null == nix || this !== nix) && cushion || 0;
         el = el.getBoundingClientRect(); // read-only
         o['width'] = (o['right'] = el['right'] + cushion) - (o['left'] = el['left'] - cushion);
         o['height'] = (o['bottom'] = el['bottom'] + cushion) - (o['top'] = el['top'] - cushion);
