@@ -17,7 +17,7 @@ jQuery.extend(verge); // augment jQuery with methods from verge
 $ npm install verge
 ```
 
-## methods [(1.6)](https://github.com/ryanve/verge/blob/master/CHANGELOG.md)
+## methods [(1.7)](https://github.com/ryanve/verge/blob/master/CHANGELOG.md)
 
 ### notes
 
@@ -67,6 +67,12 @@ $.inX(elem, -100) // true if elem in is the viewport and not within 99px of the 
 
 Test if any part of an element (or the first element in a matched set) is in the same y-axis section as the viewport. Returns **boolean**.
 
+```js
+$.inY(elem)       // true if elem is in same y-axis as the viewport (exact)
+$.inY(elem, 100)  // true if elem is in same y-axis as the viewport or within 100px of it
+$.inY(elem, -100) // true if elem in is the viewport and not within 99px of the edge
+```
+
 ### $.mq()
 
 Test if a media query is active.
@@ -74,12 +80,6 @@ Test if a media query is active.
 ```js
 $.mq(mediaQueryString)
 $.mq('(orientation:portrait)')
-```
-
-```js
-$.inY(elem)       // true if elem is in same y-axis as the viewport (exact)
-$.inY(elem, 100)  // true if elem is in same y-axis as the viewport or within 100px of it
-$.inY(elem, -100) // true if elem in is the viewport and not within 99px of the edge
 ```
 
 ### $.rectangle()
@@ -91,6 +91,17 @@ The optional `cushion` parameter is an amount of pixels to act as a cushion arou
 ```js
 $.rectangle(elem)       // get elem's rectangle object
 $.rectangle(elem, 100)  // get elem's rectangle object adjusted by 100 pixels
+```
+
+### $.aspect()
+
+Get the viewport aspect ratio. Or, get the aspect ratio of an element or an object with width/height properties or methods.
+
+```js
+$.aspect()           // Get viewport aspect ratio.
+$.aspect(DOMElement) // Get element aspect ratio.
+$.aspect(screen)     // Get device aspect ratio.
+1 < $.aspect()       // => Landscape mode
 ```
 
 ## libs that use verge 
