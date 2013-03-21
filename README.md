@@ -79,7 +79,8 @@ Test if a media query is active.
 
 ```js
 $.mq(mediaQueryString)
-$.mq('(orientation:portrait)')
+$.mq('(min-color:2)')
+$.mq('tv')
 ```
 
 ### $.rectangle()
