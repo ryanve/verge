@@ -3,7 +3,7 @@
  * @link        verge.airve.com
  * @license     MIT
  * @copyright   2012 Ryan Van Etten
- * @version     1.6.3
+ * @version     1.7.0-pre
  */
 
 /*jslint browser: true, devel: true, node: true, passfail: false, bitwise: true
@@ -72,6 +72,18 @@
      */
     xports['viewportH'] = viewportH;
     
+    /**
+     * alternate syntax for getting viewport dims
+     * @return {Object}
+     */
+    function viewport() {
+        return {
+            'width': viewportW()
+          , 'height': viewportH()
+        };
+    }
+    //xports['viewport'] = viewport;
+    
     /** 
      * Cross-browser window.scrollX
      * @since   1.0.0
@@ -110,6 +122,22 @@
         return o;
     }
     xports['rectangle'] = rectangle;
+    
+    /**
+     * Get the viewport aspect ratio (or the aspect ratio of an object or element)
+     * @param  {Object=}  o    optional object with width/height props or methods
+     * @return {number}
+     * @link   w3.org/TR/css3-mediaqueries/#orientation
+     */
+    function aspect(o) {
+        o = o && 1 === o.nodeType ? rectangle(o) : o;
+        var h = null == o ? viewportH : o['height']
+          , w = null == o ? viewportW : o['width'];
+        h = typeof h == 'function' ? h.call(o) : h;
+        w = typeof w == 'function' ? w.call(o) : w;
+        return w/h;
+    }
+    xports['aspect'] = aspect;
 
     /**
      * Test if an element is in the same x-axis section as the viewport.
