@@ -1,7 +1,6 @@
-[verge](http://github.com/ryanve/verge)
-=======
+# [verge](http://verge.airve.com)
 
-[verge](http://github.com/ryanve/verge) is a compact (<1k gzipped) set of cross-browser viewport utilities written in native JavaScript. It includes the ability to detect if an element is in the current viewport. It works as a standalone module, an [ender](http://ender.jit.su) module, or as a [jQuery](http://jquery.com) plugin.
+[verge](http://verge.airve.com) is a compact (<1k gzipped) set of cross-browser viewport utilities written in native JavaScript. It includes the ability to detect if an element is in the current viewport. It works as a standalone module, an [ender](http://ender.jit.su) module, or as a [jQuery](http://jquery.com) plugin.
 
 ## installation
 
@@ -17,7 +16,7 @@ jQuery.extend(verge); // augment jQuery with methods from verge
 $ npm install verge
 ```
 
-## methods [(1.7)](https://github.com/ryanve/verge/blob/master/CHANGELOG.md)
+## methods [(1.7)](../blob/master/CHANGELOG.md)
 
 ### notes
 
@@ -107,7 +106,7 @@ $.aspect(screen)     // Get device aspect ratio.
 
 ## libs that use verge 
 
-[Response JS](https://github.com/ryanve/response.js)
+[Response JS](http://responsejs.com)
 
 
 ## license
