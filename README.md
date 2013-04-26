@@ -16,7 +16,7 @@ jQuery.extend(verge); // augment jQuery with methods from verge
 $ npm install verge
 ```
 
-## methods [(1.7)](../blob/master/CHANGELOG.md)
+## methods [(1.7)](./blob/master/CHANGELOG.md)
 
 ### notes
 
