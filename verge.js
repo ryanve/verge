@@ -6,15 +6,12 @@
  * @version     1.7.0
  */
 
-/*jslint browser: true, devel: true, node: true, passfail: false, bitwise: true
-, continue: true, debug: true, eqeq: true, es5: true, forin: true, newcap: true
-, nomen: true, plusplus: true, regexp: true, undef: true, sloppy: true, stupid: true
-, sub: true, white: true, indent: 4, maxerr: 180 */
+/*jshint expr:true, laxcomma:true, sub:true, debug:true, eqnull:true, boss:true, node:true, evil:true,
+  undef:true, unused:true, browser:true, devel:true, jquery:true, supernew:true, maxerr:100 */
 
-(function(root, name, definition) {// github.com/umdjs/umd
-    if (typeof module != 'undefined' && module['exports']) {
-        module['exports'] = definition(); // common|node|ender
-    } else { root[name] = definition(); } // browser
+(function(root, name, make) {
+    if (typeof module != 'undefined' && module['exports']) module['exports'] = make();
+    else root[name] = make();
 }(this, 'verge', function() {
 
     var win = window
@@ -30,10 +27,11 @@
             // @link  responsejs.com/labs/dimensions/
             // @link  quirksmode.org/mobile/viewports2.html
             // @link  github.com/ryanve/response.js/issues/17
-            return (docElem[client] < win[inner] && mq('(min-' + dim + ':' + win[inner] + 'px)')
-                ? function() { return win[inner]; }
-                : function() { return docElem[client]; }
-            );
+            return docElem[client] < win[inner] && mq('(min-' + dim + ':' + win[inner] + 'px)') ? function() {
+                return win[inner]; 
+            } : function() {
+                return docElem[client];
+            };
         }
       , viewportW = makeViewportGetter('width', 'innerWidth', 'clientWidth')
       , viewportH = makeViewportGetter('height', 'innerHeight', 'clientHeight')
@@ -77,11 +75,9 @@
      * @return {Object}
      */
     function viewport() {
-        return {
-            'width': viewportW()
-          , 'height': viewportH()
-        };
+        return {'width':viewportW(), 'height':viewportH()};
     }
+    // May add this to future version
     //xports['viewport'] = viewport;
     
     /** 
