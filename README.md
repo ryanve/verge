@@ -1,6 +1,6 @@
 # [verge](../../)
 
-<b>verge</b> is a compact (<1k gzipped) set of cross-browser viewport utilities written in native JavaScript. It includes the ability to detect if an element is in the current viewport. It works as a standalone module, an [ender](#ender-integration) module, or as a [jQuery](#jquery-integration) plugin.
+<b>verge</b> is a compact (<1k gzipped) set of cross-browser viewport utilities written in native JavaScript. It includes the ability to detect if an element is in the current viewport. It works as a standalone module, an [ender](#ender) module, or as a [jQuery](#jquery) plugin.
 
 <pre>
 <code>$ <a href="https://npmjs.org/package/verge">npm install verge</a></code>
@@ -107,13 +107,13 @@ $.aspect(screen)   // -> device aspect ratio
 
 ## <a name="integrate"></a>Integrate
 
-### <a name="jquery-integration" href="http://jquery.com">jQuery</a>
+### <a href="http://jquery.com">jQuery</a>
 
 ```js
 jQuery.extend(verge)
 ```
 
-### <a name="ender-integration" href="https://github.com/ender-js">ender</a>
+### <a href="https://github.com/ender-js">ender</a>
 
 ```sh
 $ ender build verge
@@ -123,7 +123,7 @@ $ ender build verge
 
 <b>Contribute</b> by making edits in [`/src`](./src) or reporting [issues](../../issues).
 
-```
+```sh
 $ npm install
 $ grunt jshint:src
 ```
