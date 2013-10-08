@@ -29,15 +29,15 @@
     
     /** 
      * Test if a media query is active. (Fallback uses Modernizr if avail.)
-     * @since   1.6.0
-     * @return  {boolean}
+     * @since 1.6.0
+     * @return {boolean}
      */    
     xports['mq'] = !matchMedia && Modernizr && Modernizr['mq'] || mq;
 
     /** 
      * Normalized, gracefully-degrading matchMedia.
-     * @since   1.6.0
-     * @return  {Object}
+     * @since 1.6.0
+     * @return {Object}
      */ 
     xports['matchMedia'] = matchMedia ? function() {
         // matchMedia must be binded to window
@@ -48,20 +48,21 @@
 
     /** 
      * Get the layout viewport width.
-     * @since   1.0.0
-     * @return  {number}
+     * @since 1.0.0
+     * @return {number}
      */
     xports['viewportW'] = viewportW;
 
     /** 
      * Get the layout viewport height.
-     * @since   1.0.0
-     * @return  {number}
+     * @since 1.0.0
+     * @return {number}
      */
     xports['viewportH'] = viewportH;
     
     /**
      * alternate syntax for getting viewport dims
+     * @since 1.8.0
      * @return {Object}
      */
     xports['viewport'] = function() {
@@ -70,8 +71,8 @@
     
     /** 
      * Cross-browser window.scrollX
-     * @since   1.0.0
-     * @return  {number}
+     * @since 1.0.0
+     * @return {number}
      */
     xports['scrollX'] = function() {
         return win.pageXOffset || docElem.scrollLeft; 
@@ -79,19 +80,19 @@
 
     /** 
      * Cross-browser window.scrollY
-     * @since   1.0.0
-     * @return  {number}
+     * @since 1.0.0
+     * @return {number}
      */
     xports['scrollY'] = function() {
         return win.pageYOffset || docElem.scrollTop; 
     };
 
-    /** 
+    /**
      * Cross-browser element.getBoundingClientRect plus optional cushion.
      * Coords are relative to the top-left corner of the viewport.
-     * @since  1.0.0
-     * @param  {Object|Array} el       DOM element or collection (defaults to first item)
-     * @param  {number=}      cushion  +/- pixel amount to act as a cushion around the viewport
+     * @since 1.0.0
+     * @param {Object|Array} el       DOM element or collection (defaults to first item)
+     * @param {number=}      cushion  +/- pixel amount to act as a cushion around the viewport
      * @return {Object|boolean}
      */
     function rectangle(el, cushion) {
@@ -108,10 +109,10 @@
     
     /**
      * Get the viewport aspect ratio (or the aspect ratio of an object or element)
-     * @since  1.7.0
-     * @param  {Object=}  o    optional object with width/height props or methods
+     * @since 1.7.0
+     * @param {Object=} o optional object with width/height props or methods
      * @return {number}
-     * @link   w3.org/TR/css3-mediaqueries/#orientation
+     * @link http://w3.org/TR/css3-mediaqueries/#orientation
      */
     function aspect(o) {
         o = o && 1 === o.nodeType ? rectangle(o) : o;
@@ -125,10 +126,10 @@
 
     /**
      * Test if an element is in the same x-axis section as the viewport.
-     * @since   1.0.0
-     * @param   {Object}   el
-     * @param   {number=}  cushion
-     * @return  {boolean}
+     * @since 1.0.0
+     * @param {Object} el
+     * @param {number=} cushion
+     * @return {boolean}
      */
     xports['inX'] = function(el, cushion) {
         var r = rectangle(el, cushion);
@@ -137,9 +138,9 @@
 
     /**
      * Test if an element is in the same y-axis section as the viewport.
-     * @since   1.0.0
-     * @param   {Object}   el
-     * @param   {number=}  cushion
+     * @since 1.0.0
+     * @param {Object} el
+     * @param {number=} cushion
      * @return  {boolean}
      */
     xports['inY'] = function(el, cushion) {
@@ -149,10 +150,10 @@
 
     /**
      * Test if an element is in the viewport.
-     * @since   1.0.0
-     * @param   {Object}   el
-     * @param   {number=}  cushion
-     * @return  {boolean}
+     * @since 1.0.0
+     * @param {Object} el
+     * @param {number=} cushion
+     * @return {boolean}
      */
     xports['inViewport'] = function(el, cushion) {
         // Equiv to `inX(el, cushion) && inY(el, cushion)` but just manually do both 
