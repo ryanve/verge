@@ -65,9 +65,10 @@
      * @since 1.8.0
      * @return {Object}
      */
-    xports['viewport'] = function() {
+    function viewport() {
         return {'width':viewportW(), 'height':viewportH()};
-    };
+    }
+    xports['viewport'] = viewport;
     
     /** 
      * Cross-browser window.scrollX
@@ -115,9 +116,8 @@
      * @link http://w3.org/TR/css3-mediaqueries/#orientation
      */
     function aspect(o) {
-        o = o && 1 === o.nodeType ? rectangle(o) : o;
-        var h = null == o ? viewportH : o['height']
-          , w = null == o ? viewportW : o['width'];
+        o = null == o ? viewport() : 1 === o.nodeType ? rectangle(o) : o;
+        var h = o['height'], w = o['width'];
         h = typeof h == 'function' ? h.call(o) : h;
         w = typeof w == 'function' ? w.call(o) : w;
         return w/h;
