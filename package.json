@@ -1,14 +1,21 @@
 {
     "name": "verge",
     "description": "viewport utilities module",
-    "version": "1.7.0",
-    "homepage": "http://verge.airve.com",
-    "author": "Ryan Van Etten <ryanve@gmail.com> (http://ryanve.com)",
+    "version": "1.8.0",
+    "homepage": "https://github.com/ryanve/verge",
+    "license": "MIT",
+    "author": "Ryan Van Etten",
     "keywords": ["viewport", "dimensions", "responsive", "media queries", "ender"],
     "main": "./verge.js",
     "ender": "./ender.js",
     "repository": {
         "type": "git",
         "url": "https://github.com/ryanve/verge.git"
+    }, 
+    "devDependencies": {
+        "grunt": "~0.4.1",
+        "grunt-contrib-uglify": "~0.2.4",
+        "grunt-contrib-concat": "~0.3.0",
+        "grunt-contrib-jshint": "~0.6.4"
     }
 }

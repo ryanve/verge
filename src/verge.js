@@ -1,9 +1,3 @@
-/*!
- * verge 1.8.0+201310080425
- * https://github.com/ryanve/verge
- * MIT License 2013 Ryan Van Etten
- */
-
 (function(root, name, make) {
     if (typeof module != 'undefined' && module['exports']) module['exports'] = make();
     else root[name] = make();
