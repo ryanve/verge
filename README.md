@@ -1,39 +1,38 @@
-# [verge](http://verge.airve.com)
+# [verge](../../)
 
-[verge](http://verge.airve.com) is a compact (<1k gzipped) set of cross-browser viewport utilities written in native JavaScript. It includes the ability to detect if an element is in the current viewport. It works as a standalone module, an [ender](http://ender.jit.su) module, or as a [jQuery](http://jquery.com) plugin.
+<b>verge</b> is a compact (<1k gzipped) set of cross-browser viewport utilities written in native JavaScript. It includes the ability to detect if an element is in the current viewport. It works as a standalone module, an [ender](#ender-integration) module, or as a [jQuery](#jquery-integration) plugin.
 
-## installation
+<pre>
+<code>$ <a href="https://npmjs.org/package/verge">npm install verge</a></code>
+</pre>
 
-#### [jQuery](http://jquery.com)
+## API ([1.8](../../releases))
 
-```js
-jQuery.extend(verge); // augment jQuery with methods from verge
-```
+In <b>standalone</b> usage, methods are available on the <b>verge</b> namespace. (`verge.aspect()`, &hellip;)
 
-#### [NPM](https://npmjs.org/package/verge)
+The docs below use <b>$</b> to denote <b>verge</b> or a [host lib](#integrate).
 
-```
-$ npm install verge
-```
+- <a href="#aspect"><b>$.aspect()</b></a>
+- <a href="#inviewport"><b>$.inViewport()</b></a>
+- <a href="#inx"><b>$.inX()</b></a>
+- <a href="#iny"><b>$.inY()</b></a> 
+- <a href="#mq"><b>$.mq()</b></a>
+- <a href="#rectangle"><b>$.rectangle()</b></a>
+- <a href="#viewportw"><b>$.viewportW()</b></a>
+- <a href="#viewporth"><b>$.viewportH()</b></a>
 
-## methods [(1.7)](./CHANGELOG.md)
-
-### notes
-
-In standalone usage, methods are available on the **verge** namespace: `verge.scrollY()`, ...
-
-The docs below use `$` to denote `verge` or a host lib (like jQuery or ender).
+***
 
 ### $.viewportW()
 
 ```js
-$.viewportW()            // Get the current viewport width (in pixels).
+$.viewportW()  // -> viewport width in pixels
 ```
 
 ### $.viewportH()
 
 ```js
-$.viewportH()            // Get the current viewport height (in pixels).
+$.viewportH()  // -> viewport height in pixels
 ```
 
 ### $.inViewport()
@@ -46,7 +45,7 @@ $.inViewport(elem, 100)  // true if elem is in the current viewport or within 10
 $.inViewport(elem, -100) // true if elem is in the current viewport and not within 99px of the edge
 ```
 
-**Tip:** If you're dealing with a page that only ever scrolls in one direction, it is faster to substitute `inViewport` with `inY` or `inX`. On pages that **never** scroll horizontally, `inX` always returns `true`. On pages that **never** scroll vertically, `inY` always returns `true`. In other words, use `inY` on sites that scroll **only** vertically, and `inX` on sites that scroll **only** horizontally. If the viewport width is greater than or equal to the `document` width, then `inX` will always return `true`.
+<b>Tip:</b> If you're dealing with a page that only ever scrolls in one direction, it is faster to substitute `inViewport` with `inY` or `inX`. On pages that **never** scroll horizontally, `inX` always returns `true`. On pages that **never** scroll vertically, `inY` always returns `true`. In other words, use `inY` on sites that scroll **only** vertically, and `inX` on sites that scroll **only** horizontally. If the viewport width is greater than or equal to the `document` width, then `inX` will always return `true`.
 
 ```js
 $.inViewport(elem) === $.inX(elem) && $.inY(elem) // always true
@@ -83,52 +82,47 @@ $.mq('tv')
 ```
 
 ### $.rectangle()
+#### $.rectangle(element, cushion?)
 
-The `$.rectangle(elem [, cushion])` method returns an a object containing the properties `top`, `bottom`, `left`, `right`, `width`, and `height` with respect to the top-left corner of the current viewport, and with an optional cushion amount. Its return is like that of the native [getBoundingClientRect](https://developer.mozilla.org/en/DOM/element.getBoundingClientRect) (with the added assurance that all six properties will exist).
+Get an a <b>object</b> containing the properties `top`, `bottom`, `left`, `right`, `width`, and `height` with respect to the top-left corner of the current viewport, and with an optional cushion amount. Its return is like that of the native [getBoundingClientRect](https://developer.mozilla.org/en/DOM/element.getBoundingClientRect).
 
-The optional `cushion` parameter is an amount of pixels to act as a cushion around the element. If none is provided then it defaults to `0` and the rectangle will match the result of the native rectangle. If a cushion is specified, the properties are adjusted according to the cushion amount. If the cushion is **positive** the rectangle will represent an area that is larger that the actual element. If the cushion is **negative** then the rectangle will represent an area that is **smaller** that the actual element. 
+The optional <b>cushion</b> parameter is an amount of pixels to act as a cushion around the element. If none is provided then it defaults to `0` and the rectangle will match the native rectangle. If a cushion is specified, the properties are adjusted according to the cushion amount. If the cushion is **positive** the rectangle will represent an area that is larger that the actual element. If the cushion is **negative** then the rectangle will represent an area that is **smaller** that the actual element. 
 
 ```js
-$.rectangle(elem)       // get elem's rectangle object
-$.rectangle(elem, 100)  // get elem's rectangle object adjusted by 100 pixels
+$.rectangle(element)       // rectangle object
+$.rectangle(element, 100)  // rectangle object adjusted by 100 pixels
 ```
 
 ### $.aspect()
+#### $.aspect(object?)
 
-Get the viewport aspect ratio. Or, get the aspect ratio of an element or an object with width/height properties or methods.
+Get the aspect ratio of the viewport <b>or</b> of an object with width/height properties.
 
-```js
-$.aspect()           // Get viewport aspect ratio.
-$.aspect(DOMElement) // Get element aspect ratio.
-$.aspect(screen)     // Get device aspect ratio.
-1 < $.aspect()       // => Landscape mode
+```
+$.aspect()         // -> viewport aspect ratio
+$.aspect(element)  // -> element aspect ratio
+$.aspect(screen)   // -> device aspect ratio
+1 < $.aspect()     // => landscape orientation
 ```
 
-## libs that use verge 
+## <a name="integrate"></a>Integrate
 
-[Response JS](http://responsejs.com)
+### <a name="jquery-integration" href="http://jquery.com">jQuery</a>
 
+```js
+jQuery.extend(verge)
+```
 
-## license
+### <a name="ender-integration" href="https://github.com/ender-js">ender</a>
 
-### [verge](http://github.com/ryanve/verge) is available under the [MIT license](http://en.wikipedia.org/wiki/MIT_License)
+```sh
+$ ender build verge
+```
+
+## Fund
+
+Fund development with [tips to @ryanve](https://www.gittip.com/ryanve/) =)
+
+## [MIT License](http://opensource.org/licenses/MIT)
 
 Copyright (C) 2012 by [Ryan Van Etten](https://github.com/ryanve)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
