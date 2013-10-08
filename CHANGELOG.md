@@ -1,14 +1,21 @@
-# CHANGELOG | [current](./verge.js)
+# Changelog
 
-## [1.7](../../tree/114f06e791367d1aca4ea621e419b5313fc1c7ab)
+#### [Browse](../../releases) or [compare](../../compare/1.7.0...1.8.0) releases.
+
+## [1.8](../../releases/tag/1.8.0)
+
+- Use [grunt](GruntFile.js) to generate builds.
+- Added: `verge.viewport()` as alternate syntax to get viewport dimensions.
+
+## [1.7](../../releases/tag/1.7.0)
 
 - Added: `verge.aspect()`
 - `verge.rectangle()`: Invalid inputs now return `false` rather than `undefined`. Removed undocumented [3rd param](../../commit/798c7edd54f4ebb73b175ab4498848338295729d). 
 
-## [1.6](../../tree/56434a5b32879a3c2bec51370d539aef9eb1518a)
+## [1.6](../../releases/tag/1.6.0)
 
 - Added: `verge.matchMedia()`  and `verge.mq()`
 
-## [1.5](../../tree/9699dfff1c6628d667073773f914af9848ca97f1)
+## [1.5](../../releases/tag/1.5.0)
 
-Major simplifications were made. All `.fn` methods were removed. See [#1](../../issues/1). This also allowed for the top-level `.bindVerger` and `.bridge` methods to be removed, as integration is now much more simple. See [README.md](./README.md). The `.noConflict` unnecessary and was also removed. What left with is a lightweight [static api](./README.md). Devs can decide how and if they want to implement effins, while [verge](../) simply provides the functional tools to do so.
+Major simplifications were made: `.fn` and related integration methods were removed (see [#1](../../issues/1)). `.noConflict` was unnecessary and also removed. What's left is a lightweight [static api](./README.md).
