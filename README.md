@@ -119,6 +119,15 @@ jQuery.extend(verge)
 $ ender build verge
 ```
 
+## Developers
+
+<b>Contribute</b> by making edits in [`/src`](./src) or reporting [issues](../../issues).
+
+```
+$ npm install
+$ grunt jshint:src
+```
+
 ## Fund
 
 Fund development with [tips to @ryanve](https://www.gittip.com/ryanve/) =)
