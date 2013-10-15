@@ -45,7 +45,7 @@ $.inViewport(elem, 100)  // true if elem is in the current viewport or within 10
 $.inViewport(elem, -100) // true if elem is in the current viewport and not within 99px of the edge
 ```
 
-<b>Tip:</b> If you're dealing with a page that only ever scrolls in one direction, it is faster to substitute `inViewport` with `inY` or `inX`. On pages that **never** scroll horizontally, `inX` always returns `true`. On pages that **never** scroll vertically, `inY` always returns `true`. In other words, use `inY` on sites that scroll **only** vertically, and `inX` on sites that scroll **only** horizontally. If the viewport width is greater than or equal to the `document` width, then `inX` will always return `true`.
+<b>Tip:</b> On pages that only scroll in one direction, it is faster to substitute `inViewport` with `inY` or `inX`. On pages without horizontal scroll, `inX` always returns `true`. On pages without vertical scroll, `inY` always returns `true`. Use `inY` on vertical sites and `inX` on horizontal ones. If the viewport width is greater than or equal to the `document` width, then `inX` will always return `true`.
 
 ```js
 $.inViewport(elem) === $.inX(elem) && $.inY(elem) // always true
