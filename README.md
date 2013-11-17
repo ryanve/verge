@@ -15,9 +15,11 @@ The docs below use <b>$</b> to denote <b>verge</b> or a [host lib](#integrate).
 - <a href="#aspect"><b>$.aspect()</b></a>
 - <a href="#inviewport"><b>$.inViewport()</b></a>
 - <a href="#inx"><b>$.inX()</b></a>
-- <a href="#iny"><b>$.inY()</b></a> 
+- <a href="#iny"><b>$.inY()</b></a>
 - <a href="#mq"><b>$.mq()</b></a>
 - <a href="#rectangle"><b>$.rectangle()</b></a>
+- <a href="#scrollx"><b>$.scrollX()</b></a>
+- <a href="#scrolly"><b>$.scrollY()</b></a>
 - <a href="#viewportw"><b>$.viewportW()</b></a>
 - <a href="#viewporth"><b>$.viewportH()</b></a>
 
@@ -104,6 +106,14 @@ $.aspect(element)  // -> element aspect ratio
 $.aspect(screen)   // -> device aspect ratio
 1 < $.aspect()     // => landscape orientation
 ```
+
+### $.scrollX()
+
+Get the <b>horizontal</b> scroll position in pixels. (Like [`window.scrollX`](https://developer.mozilla.org/en-US/docs/Web/API/Window.scrollX), but cross-browser.)
+
+### $.scrollY()
+
+Get the <b>vertical</b> scroll position in pixels. (Like [`window.scrollY`](https://developer.mozilla.org/en-US/docs/Web/API/Window.scrollY), but cross-browser.)
 
 ## <a name="integrate"></a>Integrate
 
