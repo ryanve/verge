@@ -111,9 +111,17 @@ $.aspect(screen)   // -> device aspect ratio
 
 Get the <b>horizontal</b> scroll position in pixels. (Like [`window.scrollX`](https://developer.mozilla.org/en-US/docs/Web/API/Window.scrollX), but cross-browser.)
 
+```js
+$.scrollX()  // -> horizontal pixels scrolled
+```
+
 ### $.scrollY()
 
 Get the <b>vertical</b> scroll position in pixels. (Like [`window.scrollY`](https://developer.mozilla.org/en-US/docs/Web/API/Window.scrollY), but cross-browser.)
+
+```js
+$.scrollY()  // -> vertical pixels scrolled
+```
 
 ## <a name="integrate"></a>Integrate
 
