@@ -1,5 +1,5 @@
 /*!
- * verge 1.8.0+201310080639
+ * verge 1.8.1+201311170536
  * https://github.com/ryanve/verge
  * MIT License 2013 Ryan Van Etten
  */
