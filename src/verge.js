@@ -92,7 +92,7 @@
      * Cross-browser element.getBoundingClientRect plus optional cushion.
      * Coords are relative to the top-left corner of the viewport.
      * @since 1.0.0
-     * @param {Node|Object} el DOM element or collection (defaults to first item)
+     * @param {Element|Object} el element or stack (uses to first item)
      * @param {number=} cushion +/- pixel amount to act as a cushion around the viewport
      * @return {Object|boolean}
      */
@@ -111,7 +111,7 @@
     /**
      * Get the viewport aspect ratio (or the aspect ratio of an object or element)
      * @since 1.7.0
-     * @param {(Node|Object)=} o optional object with width/height props or methods
+     * @param {(Element|Object)=} o optional object with width/height props or methods
      * @return {number}
      * @link http://w3.org/TR/css3-mediaqueries/#orientation
      */
@@ -127,7 +127,7 @@
     /**
      * Test if an element is in the same x-axis section as the viewport.
      * @since 1.0.0
-     * @param {Node|Object} el
+     * @param {Element|Object} el
      * @param {number=} cushion
      * @return {boolean}
      */
@@ -139,7 +139,7 @@
     /**
      * Test if an element is in the same y-axis section as the viewport.
      * @since 1.0.0
-     * @param {Node|Object} el
+     * @param {Element|Object} el
      * @param {number=} cushion
      * @return {boolean}
      */
@@ -151,7 +151,7 @@
     /**
      * Test if an element is in the viewport.
      * @since 1.0.0
-     * @param {Object} el
+     * @param {Element|Object} el
      * @param {number=} cushion
      * @return {boolean}
      */
