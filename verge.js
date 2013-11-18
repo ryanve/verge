@@ -1,5 +1,5 @@
 /*!
- * verge 1.8.1+201311170536
+ * verge 1.8.2+201311180858
  * https://github.com/ryanve/verge
  * MIT License 2013 Ryan Van Etten
  */
@@ -95,29 +95,37 @@
     };
 
     /**
+     * @param {{top:number, right:number, bottom:number, left:number}} coords
+     * @param {number=} cushion adjustment
+     * @return {Object}
+     */
+    function calibrate(coords, cushion) {
+        var o = {};
+        cushion = +cushion || 0;
+        o['width'] = (o['right'] = coords['right'] + cushion) - (o['left'] = coords['left'] - cushion);
+        o['height'] = (o['bottom'] = coords['bottom'] + cushion) - (o['top'] = coords['top'] - cushion);
+        return o;
+    }
+
+    /**
      * Cross-browser element.getBoundingClientRect plus optional cushion.
      * Coords are relative to the top-left corner of the viewport.
      * @since 1.0.0
-     * @param {Node|Object} el DOM element or collection (defaults to first item)
-     * @param {number=} cushion +/- pixel amount to act as a cushion around the viewport
+     * @param {Element|Object} el element or stack (uses first item)
+     * @param {number=} cushion +/- pixel adjustment amount
      * @return {Object|boolean}
      */
     function rectangle(el, cushion) {
-        var o = {};
-        if (el && !el.nodeType) el = el[0];
+        el = el && !el.nodeType ? el[0] : el;
         if (!el || 1 !== el.nodeType) return false;
-        cushion = typeof cushion == 'number' && cushion || 0;
-        el = el.getBoundingClientRect(); // read-only
-        o['width'] = (o['right'] = el['right'] + cushion) - (o['left'] = el['left'] - cushion);
-        o['height'] = (o['bottom'] = el['bottom'] + cushion) - (o['top'] = el['top'] - cushion);
-        return o;
+        return calibrate(el.getBoundingClientRect(), cushion);
     }
     xports['rectangle'] = rectangle;
-    
+
     /**
      * Get the viewport aspect ratio (or the aspect ratio of an object or element)
      * @since 1.7.0
-     * @param {(Node|Object)=} o optional object with width/height props or methods
+     * @param {(Element|Object)=} o optional object with width/height props or methods
      * @return {number}
      * @link http://w3.org/TR/css3-mediaqueries/#orientation
      */
@@ -133,7 +141,7 @@
     /**
      * Test if an element is in the same x-axis section as the viewport.
      * @since 1.0.0
-     * @param {Node|Object} el
+     * @param {Element|Object} el
      * @param {number=} cushion
      * @return {boolean}
      */
@@ -145,7 +153,7 @@
     /**
      * Test if an element is in the same y-axis section as the viewport.
      * @since 1.0.0
-     * @param {Node|Object} el
+     * @param {Element|Object} el
      * @param {number=} cushion
      * @return {boolean}
      */
@@ -157,7 +165,7 @@
     /**
      * Test if an element is in the viewport.
      * @since 1.0.0
-     * @param {Object} el
+     * @param {Element|Object} el
      * @param {number=} cushion
      * @return {boolean}
      */
