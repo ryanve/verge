@@ -22,6 +22,7 @@ The docs below use <b>$</b> to denote <b>verge</b> or a [host lib](#integrate).
 - <a href="#scrolly"><b>$.scrollY()</b></a>
 - <a href="#viewportw"><b>$.viewportW()</b></a>
 - <a href="#viewporth"><b>$.viewportH()</b></a>
+- <a href="#viewport"><b>$.viewport()</b></a>
 
 ***
 
@@ -35,6 +36,24 @@ $.viewportW()  // -> viewport width in pixels
 
 ```js
 $.viewportH()  // -> viewport height in pixels
+```
+
+### $.viewport()
+
+Get an <b>object</b> with width and height properties&mdash;an alternate syntax to get both viewport dimensions.
+
+```js
+$.viewportW() === $.viewport().width  // always true
+$.viewportH() === $.viewport().height // always true
+```
+
+#### The [`.viewportW()`](#viewportw) syntax is faster. 
+##### Mitigate the speed difference with local vars.
+
+```js
+var current = $.viewport()
+  , width = current.width
+  , height = current.height
 ```
 
 ### $.inViewport()
