@@ -10,12 +10,15 @@
 ## [1.7](../../releases/tag/1.7.0)
 
 - Added: `verge.aspect()`
-- `verge.rectangle()`: Invalid inputs now return `false` rather than `undefined`. Removed undocumented [3rd param](../../commit/798c7edd54f4ebb73b175ab4498848338295729d). 
+- `verge.rectangle()`
+  - Invalid inputs now return `false` rather than `undefined`. 
+  - Removed undocumented [iteration guard parameter](../../commit/798c7edd54f4ebb73b175ab4498848338295729d).
 
 ## [1.6](../../releases/tag/1.6.0)
 
-- Added: `verge.matchMedia()`  and `verge.mq()`
+- Added: `verge.matchMedia()` and `verge.mq()`
 
 ## [1.5](../../releases/tag/1.5.0)
 
-Major simplifications were made: `.fn` and related integration methods were removed (see [#1](../../issues/1)). `.noConflict` was unnecessary and also removed. What's left is a lightweight [static api](./README.md).
+- Simplified into a lightweight [static api](./README.md).
+  - Removed: `.noConflict`, [`.fn`](../../issues/1), and integration methods.
