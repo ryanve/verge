@@ -20,7 +20,7 @@ The docs below use <b>$</b> to denote <b>verge</b> or a [host lib](#integrate).
 - <a href="#iny"><b>$.inY()</b></a>
 - <a href="#scrollx"><b>$.scrollX()</b></a>
 - <a href="#scrolly"><b>$.scrollY()</b></a>
-- <a href="#mq"><b>$.mq()</b></a>
+- <a href="#mq"><b>$.mq()</b></a> <b>1.6+</b>
 - <a href="#rectangle"><b>$.rectangle()</b></a>
 - <a href="#aspect"><b>$.aspect()</b></a> <b>1.7+</b>
 
