@@ -12,17 +12,17 @@ In <b>standalone</b> usage, methods are available on the <b>verge</b> namespace.
 
 The docs below use <b>$</b> to denote <b>verge</b> or a [host lib](#integrate).
 
-- <a href="#aspect"><b>$.aspect()</b></a>
+- <a href="#viewportw"><b>$.viewportW()</b></a>
+- <a href="#viewporth"><b>$.viewportH()</b></a>
+- <a href="#viewport"><b>$.viewport()</b></a> <b>1.8+</b>
 - <a href="#inviewport"><b>$.inViewport()</b></a>
 - <a href="#inx"><b>$.inX()</b></a>
 - <a href="#iny"><b>$.inY()</b></a>
-- <a href="#mq"><b>$.mq()</b></a>
-- <a href="#rectangle"><b>$.rectangle()</b></a>
 - <a href="#scrollx"><b>$.scrollX()</b></a>
 - <a href="#scrolly"><b>$.scrollY()</b></a>
-- <a href="#viewportw"><b>$.viewportW()</b></a>
-- <a href="#viewporth"><b>$.viewportH()</b></a>
-- <a href="#viewport"><b>$.viewport()</b></a>
+- <a href="#mq"><b>$.mq()</b></a>
+- <a href="#rectangle"><b>$.rectangle()</b></a>
+- <a href="#aspect"><b>$.aspect()</b></a> <b>1.7+</b>
 
 ***
 
@@ -92,14 +92,30 @@ $.inY(elem, 100)  // true if elem is in same y-axis as the viewport or within 10
 $.inY(elem, -100) // true if elem in is the viewport and not within 99px of the edge
 ```
 
+### $.scrollX()
+
+Get the <b>horizontal</b> scroll position in pixels. (Like [`window.scrollX`](https://developer.mozilla.org/en-US/docs/Web/API/Window.scrollX), but cross-browser.)
+
+```js
+$.scrollX()  // -> horizontal pixels scrolled
+```
+
+### $.scrollY()
+
+Get the <b>vertical</b> scroll position in pixels. (Like [`window.scrollY`](https://developer.mozilla.org/en-US/docs/Web/API/Window.scrollY), but cross-browser.)
+
+```js
+$.scrollY()  // -> vertical pixels scrolled
+```
+
 ### $.mq()
+#### $.mq(mediaQueryString)
 
 Test if a [media query](http://airve.com/mq/) is active.
 
 ```js
-$.mq(mediaQueryString)
-$.mq('(min-color:2)')
-$.mq('tv')
+$.mq('(min-color:2)') // -> boolean
+$.mq('tv')            // -> boolean
 ```
 
 ### $.rectangle()
@@ -124,22 +140,6 @@ $.aspect()         // -> viewport aspect ratio
 $.aspect(element)  // -> element aspect ratio
 $.aspect(screen)   // -> device aspect ratio
 1 < $.aspect()     // => landscape orientation
-```
-
-### $.scrollX()
-
-Get the <b>horizontal</b> scroll position in pixels. (Like [`window.scrollX`](https://developer.mozilla.org/en-US/docs/Web/API/Window.scrollX), but cross-browser.)
-
-```js
-$.scrollX()  // -> horizontal pixels scrolled
-```
-
-### $.scrollY()
-
-Get the <b>vertical</b> scroll position in pixels. (Like [`window.scrollY`](https://developer.mozilla.org/en-US/docs/Web/API/Window.scrollY), but cross-browser.)
-
-```js
-$.scrollY()  // -> vertical pixels scrolled
 ```
 
 ## <a name="integrate"></a>Integrate
