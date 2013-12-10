@@ -3,7 +3,8 @@
     else root[name] = make();
 }(this, 'verge', function() {
 
-    var win = typeof window != 'undefined' && window
+    var xports = {} 
+      , win = typeof window != 'undefined' && window
       , doc = typeof document != 'undefined' && document
       , docElem = doc && doc.documentElement
       , Modernizr = win['Modernizr']
@@ -13,19 +14,18 @@
         } : function() {
             return false;
         }
-      , makeViewportGetter = function(dim, inner, client) {
-            // http://responsejs.com/labs/dimensions/
-            // http://quirksmode.org/mobile/viewports2.html
-            // http://github.com/ryanve/response.js/issues/17
-            return docElem[client] < win[inner] && mq('(min-' + dim + ':' + win[inner] + 'px)') ? function() {
-                return win[inner]; 
-            } : function() {
-                return docElem[client];
-            };
+        // http://ryanve.com/lab/dimensions
+        // http://github.com/ryanve/verge/issues/7
+      , viewportW = docElem['clientWidth'] < win['innerWidth'] ? function() {
+            return win['innerWidth'];
+        } : function() {
+            return docElem['clientWidth'];
         }
-      , viewportW = makeViewportGetter('width', 'innerWidth', 'clientWidth')
-      , viewportH = makeViewportGetter('height', 'innerHeight', 'clientHeight')
-      , xports = {};
+      , viewportH = docElem['clientHeight'] < win['innerHeight'] ? function() {
+            return win['innerHeight'];
+        } : function() {
+            return docElem['clientHeight'];
+        };
     
     /** 
      * Test if a media query is active. (Fallback uses Modernizr if avail.)

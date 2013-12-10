@@ -1,7 +1,7 @@
 {
     "name": "verge",
     "description": "viewport utilities module",
-    "version": "1.8.2",
+    "version": "1.8.3",
     "homepage": "https://github.com/ryanve/verge",
     "license": "MIT",
     "author": "Ryan Van Etten",
