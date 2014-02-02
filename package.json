@@ -1,7 +1,7 @@
 {
   "name": "verge",
   "description": "viewport utilities module",
-  "version": "1.8.3",
+  "version": "1.9.0",
   "homepage": "https://github.com/ryanve/verge",
   "license": "MIT",
   "author": "Ryan Van Etten",
@@ -13,9 +13,9 @@
     "url": "https://github.com/ryanve/verge.git"
   }, 
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-uglify": "~0.2.4",
+    "grunt": "~0.4.2",
+    "grunt-contrib-uglify": "~0.3.0",
     "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-jshint": "~0.6.4"
+    "grunt-contrib-jshint": "~0.8.0"
   }
 }
