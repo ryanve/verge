@@ -3,11 +3,10 @@
     else root[name] = make();
 }(this, 'verge', function() {
 
-    var xports = {} 
+    var xports = {}
       , win = typeof window != 'undefined' && window
       , doc = typeof document != 'undefined' && document
       , docElem = doc && doc.documentElement
-      , Modernizr = win['Modernizr']
       , matchMedia = win['matchMedia'] || win['msMatchMedia']
       , mq = matchMedia ? function(q) {
             return !!matchMedia.call(win, q).matches;
@@ -28,21 +27,22 @@
         };
     
     /** 
-     * Test if a media query is active. (Fallback uses Modernizr if avail.)
+     * Test if a media query is active. Like Modernizr.mq
      * @since 1.6.0
      * @return {boolean}
      */    
-    xports['mq'] = !matchMedia && Modernizr && Modernizr['mq'] || mq;
+    xports['mq'] = mq;
 
     /** 
-     * Normalized, gracefully-degrading matchMedia.
+     * Normalized matchMedia
      * @since 1.6.0
-     * @return {Object}
+     * @return {MediaQueryList|Object}
      */ 
     xports['matchMedia'] = matchMedia ? function() {
         // matchMedia must be binded to window
         return matchMedia.apply(win, arguments);
     } : function() {
+        // Gracefully degrade to plain object
         return {};
     };
 
