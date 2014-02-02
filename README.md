@@ -29,13 +29,13 @@ The docs below use <b>$</b> to denote <b>verge</b> or a [host lib](#integrate).
 ### $.viewportW()
 
 ```js
-$.viewportW()  // -> viewport width in pixels
+$.viewportW() // -> viewport width in pixels
 ```
 
 ### $.viewportH()
 
 ```js
-$.viewportH()  // -> viewport height in pixels
+$.viewportH() // -> viewport height in pixels
 ```
 
 ### $.viewport()
@@ -61,8 +61,8 @@ var current = $.viewport()
 Test if any part of an element (or the first element in a matched set) is in the current viewport. Returns **boolean**.
 
 ```js
-$.inViewport(elem)       // true if elem is in the current viewport
-$.inViewport(elem, 100)  // true if elem is in the current viewport or within 100px of it
+$.inViewport(elem) // true if elem is in the current viewport
+$.inViewport(elem, 100) // true if elem is in the current viewport or within 100px of it
 $.inViewport(elem, -100) // true if elem is in the current viewport and not within 99px of the edge
 ```
 
@@ -83,8 +83,8 @@ $.inViewport(elem) === $.inX(elem) && $.inY(elem) // always true
 Test if any part of an element (or the first element in a matched set) is in the same x-axis section as the viewport. Returns **boolean**. 
 
 ```js
-$.inX(elem)       // true if elem is in same x-axis as the viewport (exact)
-$.inX(elem, 100)  // true if elem is in same x-axis as the viewport or within 100px of it
+$.inX(elem) // true if elem is in same x-axis as the viewport (exact)
+$.inX(elem, 100) // true if elem is in same x-axis as the viewport or within 100px of it
 $.inX(elem, -100) // true if elem in is the viewport and not within 99px of the edge
 ```
 
@@ -93,8 +93,8 @@ $.inX(elem, -100) // true if elem in is the viewport and not within 99px of the 
 Test if any part of an element (or the first element in a matched set) is in the same y-axis section as the viewport. Returns **boolean**.
 
 ```js
-$.inY(elem)       // true if elem is in same y-axis as the viewport (exact)
-$.inY(elem, 100)  // true if elem is in same y-axis as the viewport or within 100px of it
+$.inY(elem) // true if elem is in same y-axis as the viewport (exact)
+$.inY(elem, 100) // true if elem is in same y-axis as the viewport or within 100px of it
 $.inY(elem, -100) // true if elem in is the viewport and not within 99px of the edge
 ```
 
@@ -103,7 +103,7 @@ $.inY(elem, -100) // true if elem in is the viewport and not within 99px of the 
 Get the <b>horizontal</b> scroll position in pixels. (Like [`window.scrollX`](https://developer.mozilla.org/en-US/docs/Web/API/Window.scrollX), but cross-browser.)
 
 ```js
-$.scrollX()  // -> horizontal pixels scrolled
+$.scrollX() // -> horizontal pixels scrolled
 ```
 
 ### $.scrollY()
@@ -111,7 +111,7 @@ $.scrollX()  // -> horizontal pixels scrolled
 Get the <b>vertical</b> scroll position in pixels. (Like [`window.scrollY`](https://developer.mozilla.org/en-US/docs/Web/API/Window.scrollY), but cross-browser.)
 
 ```js
-$.scrollY()  // -> vertical pixels scrolled
+$.scrollY() // -> vertical pixels scrolled
 ```
 
 ### $.mq()
@@ -121,7 +121,7 @@ Test if a [media query](http://airve.com/mq/) is active.
 
 ```js
 $.mq('(min-color:2)') // -> boolean
-$.mq('tv')            // -> boolean
+$.mq('tv') // -> boolean
 ```
 
 ### $.rectangle()
@@ -132,8 +132,8 @@ Get an a <b>object</b> containing the properties `top`, `bottom`, `left`, `right
 The optional <b>cushion</b> parameter is an amount of pixels to act as a cushion around the element. If none is provided then it defaults to `0` and the rectangle will match the native rectangle. If a cushion is specified, the properties are adjusted according to the cushion amount. If the cushion is **positive** the rectangle will represent an area that is larger that the actual element. If the cushion is **negative** then the rectangle will represent an area that is **smaller** that the actual element. 
 
 ```js
-$.rectangle(element)       // rectangle object
-$.rectangle(element, 100)  // rectangle object adjusted by 100 pixels
+$.rectangle(element) // rectangle object
+$.rectangle(element, 100) // rectangle object adjusted by 100 pixels
 ```
 
 ### $.aspect()
@@ -141,11 +141,11 @@ $.rectangle(element, 100)  // rectangle object adjusted by 100 pixels
 
 Get the aspect ratio of the viewport <b>or</b> of an object with width/height properties.
 
-```
-$.aspect()         // -> viewport aspect ratio
-$.aspect(element)  // -> element aspect ratio
-$.aspect(screen)   // -> device aspect ratio
-1 < $.aspect()     // => landscape orientation
+```js
+$.aspect() // -> viewport aspect ratio
+$.aspect(element) // -> element aspect ratio
+$.aspect(screen) // -> device aspect ratio
+1 < $.aspect() // => landscape orientation
 ```
 
 ## <a name="integrate"></a>Integrate
