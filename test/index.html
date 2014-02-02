@@ -1,124 +1,124 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-    <meta charset="utf-8">
-    <title>verge // test suite</title>
-    <meta name=viewport content="width=device-width,initial-scale=1.0">
-    <meta name=description content="JavaScript module test page"> 
-    <style>
-        html { font-family:sans-serif; background:#fdf6e3; color:#586e75; font-size:1em }
-        body { margin:1em auto; max-width:100%; width:94%; }
-        a:link, a:visited { color:#268bd2 }
-        code .number { color:#b58900 }
-        pre, td, th { padding:1em;text-align:left; border:1px dotted #93a1a1 }
-        th { font-weight:bold; }
-        td { color:#2aa198 }
-        td:first-child { font-weight:normal;color:#586e75 }
-        td:last-child { color:#dc322f; }
-        pre { padding:1em; background:#073642; color:#93a1a1 }
-    </style>
-    <script src="./vendor/ender.min.js"></script>
-    <script src="../src/verge.js"></script>
-    <script src="./index.js"></script>
+  <meta charset="utf-8">
+  <title>verge // test suite</title>
+  <meta name=viewport content="width=device-width,initial-scale=1.0">
+  <meta name=description content="JavaScript module test page"> 
+  <style>
+    html { font-family:sans-serif; background:#fdf6e3; color:#586e75; font-size:1em }
+    body { margin:1em auto; max-width:100%; width:94%; }
+    a:link, a:visited { color:#268bd2 }
+    code .number { color:#b58900 }
+    pre, td, th { padding:1em;text-align:left; border:1px dotted #93a1a1 }
+    th { font-weight:bold; }
+    td { color:#2aa198 }
+    td:first-child { font-weight:normal;color:#586e75 }
+    td:last-child { color:#dc322f; }
+    pre { padding:1em; background:#073642; color:#93a1a1 }
+  </style>
+  <script src="./vendor/ender.min.js"></script>
+  <script src="../src/verge.js"></script>
+  <script src="./index.js"></script>
 </head>
 <body>
-    <div>
-        <h1><a href="http://github.com/ryanve/verge">verge</a> Test Suite</h1>
-    </div>
+  <div>
+    <h1><a href="http://github.com/ryanve/verge">verge</a> Test Suite</h1>
+  </div>
 
-    <pre id="ua"></pre>
+  <pre id="ua"></pre>
 
-    <div id="a"><pre><code>div#a</code></pre></div>
-    
-    <table id=tests>
-        <tr>
-            <th scope="col"><a href=#tests accesskey=s>test<br>code</a></th>
-            <th scope="col"><a href=#tests>expected<br>type</a></th>
-            <th scope="col"><a href=#tests>live<br>output</a></th>
-        </tr>
-        <tr>
-            <td><code>$<wbr>.inViewport(a, <span class=number>-100</span>)</code></td>
-            <td><code>boolean</code></td>
-            <td><code id="in-viewport-a-neg"></code></td>
-        </tr>
-        <tr>
-            <td><code>$<wbr>.inViewport(a)</code></td>
-            <td><code>boolean</code></td>
-            <td><code id="in-viewport-a"></code></td>
-        </tr>
-        <tr>
-            <td><code>$<wbr>.inViewport(a, <span class=number>100</span>)</code></td>
-            <td><code>boolean</code></td>
-            <td><code id="in-viewport-a-pos"></code></td>
-        </tr>
-        <tr>
-            <td><code>$<wbr>.viewportW()</code></td>
-            <td><code>number</code></td>
-            <td><code id="viewport-w"></code></td>
-        </tr>
-        <tr>
-            <td><code>$<wbr>.viewportH()</code></td>
-            <td><code>number</code></td>
-            <td><code id="viewport-h"></code></td>
-        </tr>
-        <tr>
-            <td><code>$<wbr>.scrollX()</code></td>
-            <td><code>number</code></td>
-            <td><code id="scroll-x"></code></td>
-        </tr>
-        <tr>
-            <td><code>$<wbr>.scrollY()</code></td>
-            <td><code>number</code></td>
-            <td><code id="scroll-y"></code></td>
-        </tr>
-        <tr>
-            <td><code>$<wbr>.rectangle(a)<wbr>.top</code></td>
-            <td><code>number</code></td>
-            <td><code id="rectangle-top"></code></td>
-        </tr>
-        <tr>
-            <td><code>$<wbr>.rectangle(a)<wbr>.bottom</code></td>
-            <td><code>number</code></td>
-            <td><code id="rectangle-bottom"></code></td>
-        </tr>
-        <tr>
-            <td><code>$<wbr>.rectangle(a)<wbr>.left</code></td>
-            <td><code>number</code></td>
-            <td><code id="rectangle-left"></code></td>
-        </tr>
-        <tr>
-            <td><code>$<wbr>.rectangle(a)<wbr>.right</code></td>
-            <td><code>number</code></td>
-            <td><code id="rectangle-right"></code></td>
-        </tr>
-        <tr>
-            <td><code>$<wbr>.rectangle(a)<wbr>.width</code></td>
-            <td><code>number</code></td>
-            <td><code id="rectangle-width"></code></td>
-        </tr>
-        <tr>
-            <td><code>$<wbr>.rectangle(a)<wbr>.height</code></td>
-            <td><code>number</code></td>
-            <td><code id="rectangle-height"></code></td>
-        </tr>
-        <tr>
-            <td><code>$<wbr>.inViewport(b, <span class=number>100</span>)</code></td>
-            <td><code>boolean</code></td>
-            <td><code id="in-viewport-b-pos"></code></td>
-        </tr>
-        <tr>
-            <td><code>$<wbr>.inViewport(b)</code></td>
-            <td><code>boolean</code></td>
-            <td><code id="in-viewport-b"></code></td>
-        </tr>
-        <tr>
-            <td><code>$<wbr>.inViewport(b, <span class=number>-100</span>)</code></td>
-            <td><code>boolean</code></td>
-            <td><code id="in-viewport-b-neg"></code></td>
-        </tr>
-    </table>
-    
-    <div id="b"><pre><code>div#b</code></pre></div>
-    <div id="c"><pre><code>div#c</code></pre></div>
+  <div id="a"><pre><code>div#a</code></pre></div>
+  
+  <table id=tests>
+    <tr>
+      <th scope="col"><a href=#tests accesskey=s>test<br>code</a></th>
+      <th scope="col"><a href=#tests>expected<br>type</a></th>
+      <th scope="col"><a href=#tests>live<br>output</a></th>
+    </tr>
+    <tr>
+      <td><code>$<wbr>.inViewport(a, <span class=number>-100</span>)</code></td>
+      <td><code>boolean</code></td>
+      <td><code id="in-viewport-a-neg"></code></td>
+    </tr>
+    <tr>
+      <td><code>$<wbr>.inViewport(a)</code></td>
+      <td><code>boolean</code></td>
+      <td><code id="in-viewport-a"></code></td>
+    </tr>
+    <tr>
+      <td><code>$<wbr>.inViewport(a, <span class=number>100</span>)</code></td>
+      <td><code>boolean</code></td>
+      <td><code id="in-viewport-a-pos"></code></td>
+    </tr>
+    <tr>
+      <td><code>$<wbr>.viewportW()</code></td>
+      <td><code>number</code></td>
+      <td><code id="viewport-w"></code></td>
+    </tr>
+    <tr>
+      <td><code>$<wbr>.viewportH()</code></td>
+      <td><code>number</code></td>
+      <td><code id="viewport-h"></code></td>
+    </tr>
+    <tr>
+      <td><code>$<wbr>.scrollX()</code></td>
+      <td><code>number</code></td>
+      <td><code id="scroll-x"></code></td>
+    </tr>
+    <tr>
+      <td><code>$<wbr>.scrollY()</code></td>
+      <td><code>number</code></td>
+      <td><code id="scroll-y"></code></td>
+    </tr>
+    <tr>
+      <td><code>$<wbr>.rectangle(a)<wbr>.top</code></td>
+      <td><code>number</code></td>
+      <td><code id="rectangle-top"></code></td>
+    </tr>
+    <tr>
+      <td><code>$<wbr>.rectangle(a)<wbr>.bottom</code></td>
+      <td><code>number</code></td>
+      <td><code id="rectangle-bottom"></code></td>
+    </tr>
+    <tr>
+      <td><code>$<wbr>.rectangle(a)<wbr>.left</code></td>
+      <td><code>number</code></td>
+      <td><code id="rectangle-left"></code></td>
+    </tr>
+    <tr>
+      <td><code>$<wbr>.rectangle(a)<wbr>.right</code></td>
+      <td><code>number</code></td>
+      <td><code id="rectangle-right"></code></td>
+    </tr>
+    <tr>
+      <td><code>$<wbr>.rectangle(a)<wbr>.width</code></td>
+      <td><code>number</code></td>
+      <td><code id="rectangle-width"></code></td>
+    </tr>
+    <tr>
+      <td><code>$<wbr>.rectangle(a)<wbr>.height</code></td>
+      <td><code>number</code></td>
+      <td><code id="rectangle-height"></code></td>
+    </tr>
+    <tr>
+      <td><code>$<wbr>.inViewport(b, <span class=number>100</span>)</code></td>
+      <td><code>boolean</code></td>
+      <td><code id="in-viewport-b-pos"></code></td>
+    </tr>
+    <tr>
+      <td><code>$<wbr>.inViewport(b)</code></td>
+      <td><code>boolean</code></td>
+      <td><code id="in-viewport-b"></code></td>
+    </tr>
+    <tr>
+      <td><code>$<wbr>.inViewport(b, <span class=number>-100</span>)</code></td>
+      <td><code>boolean</code></td>
+      <td><code id="in-viewport-b-neg"></code></td>
+    </tr>
+  </table>
+  
+  <div id="b"><pre><code>div#b</code></pre></div>
+  <div id="c"><pre><code>div#c</code></pre></div>
 </body> 
 </html>
