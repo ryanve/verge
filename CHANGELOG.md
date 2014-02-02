@@ -1,6 +1,10 @@
 # Changelog
 
-#### [Browse](../../releases) or [compare](../../compare/1.7.0...1.8.0) releases.
+#### [Browse](../../releases) or [compare](../../compare/1.9.0...1.8.0) releases.
+
+## [1.9](../../releases/tag/1.9.0)
+
+- [Don't assume one wants `Modernizr.mq`](../../commit/c10da267eb3e6cc57c72e8032f8061f6671981fc)
 
 ## [1.8](../../releases/tag/1.8.0)
 

@@ -6,7 +6,7 @@
 <code>$ <a href="https://npmjs.org/package/verge">npm install verge</a></code>
 </pre>
 
-## API ([1.8](../../releases))
+## API ([1.9](../../releases))
 
 In <b>standalone</b> usage, methods are available on the <b>verge</b> namespace. (`verge.aspect()`, &hellip;)
 
@@ -162,9 +162,9 @@ jQuery.extend(verge)
 $ ender build verge
 ```
 
-## Developers
+## Contribute
 
-<b>Contribute</b> by making edits in [`/src`](./src) or reporting [issues](../../issues).
+Contribute by making edits in [`/src`](./src) or reporting [issues](../../issues).
 
 ```sh
 $ npm install
@@ -173,8 +173,8 @@ $ grunt jshint:src
 
 ## Fund
 
-Fund development with [tips to @ryanve](https://www.gittip.com/ryanve/) =)
+<b>[Tip the developer](https://www.gittip.com/ryanve/)</b> =)
 
-## [MIT License](http://opensource.org/licenses/MIT)
+## License
 
-Copyright (C) 2012 by [Ryan Van Etten](https://github.com/ryanve)
+[MIT](http://opensource.org/licenses/MIT)
