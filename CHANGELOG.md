@@ -1,6 +1,6 @@
 # Changelog
 
-#### [Browse](../../releases) or [compare](../../compare/1.9.0...1.8.0) releases.
+#### [Browse](../../releases) or [compare](../../compare/1.8.0...1.9.0) releases.
 
 ## [1.9](../../releases/tag/1.9.0)
 
