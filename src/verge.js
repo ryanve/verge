@@ -13,17 +13,13 @@
       } : function() {
         return false;
       }
-      // http://ryanve.com/lab/dimensions
-      // http://github.com/ryanve/verge/issues/7
-    , viewportW = docElem['clientWidth'] < win['innerWidth'] ? function() {
-        return win['innerWidth'];
-      } : function() {
-        return docElem['clientWidth'];
+    , viewportW = xports['viewportW'] = function() {
+        var a = docElem['clientWidth'], b = win['innerWidth'];
+        return a < b ? b : a;
       }
-    , viewportH = docElem['clientHeight'] < win['innerHeight'] ? function() {
-        return win['innerHeight'];
-      } : function() {
-        return docElem['clientHeight'];
+    , viewportH = xports['viewportH'] = function() {
+        var a = docElem['clientHeight'], b = win['innerHeight'];
+        return a < b ? b : a;
       };
   
   /** 
@@ -46,24 +42,9 @@
     return {};
   };
 
-  /** 
-   * Get the layout viewport width.
-   * @since 1.0.0
-   * @return {number}
-   */
-  xports['viewportW'] = viewportW;
-
-  /** 
-   * Get the layout viewport height.
-   * @since 1.0.0
-   * @return {number}
-   */
-  xports['viewportH'] = viewportH;
-  
   /**
-   * alternate syntax for getting viewport dims
    * @since 1.8.0
-   * @return {Object}
+   * @return {{width:number, height:number}}
    */
   function viewport() {
     return {'width':viewportW(), 'height':viewportH()};
