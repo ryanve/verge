@@ -2,7 +2,7 @@
   var a, b, c
     , $ = root.$
     , verge = root.verge
-    , _ = require('blood').assign(require('curious'))
+    , _ = require('blood')
     , aok = require('aok')
     , log = aok.log
     , id = aok.id
@@ -25,13 +25,9 @@
       return fn.apply(scope, args);
     };
   }
-  
-  function html(el, markup) {
-    el && (el.innerHTML = aok.explain(aok.result(markup)) || '');
-  }
 
   function update(tests) {
-    for (var n in tests) html(id(n), tests[n]);
+    for (var n in tests) $(id(n) || []).text(aok.explain(aok.result(tests[n])) || '');
     return tests;
   }
 
@@ -41,8 +37,8 @@
   scrollTests['scroll-x'] = $.scrollX;
   scrollTests['scroll-y'] = $.scrollY;
 
-  $(document).ready(function() { 
-    if (!_.every([a = id('a'), b = id('b'), c = id('c')], _.isElement))
+  $(document).ready(function() {
+    if (_.some([a = id('a'), b = id('b'), c = id('c')], aok.fail))
       throw Error('Required DOM elements did not exist.');
     log($.rectangle(a));
     _.some(dims, function(key) {
