@@ -1,0 +1,20 @@
+{
+  "name": "verge",
+  "description": "viewport utilities module",
+  "version": "1.9.1",
+  "homepage": "https://github.com/ryanve/verge",
+  "license": "MIT",
+  "author": "Ryan Van Etten",
+  "keywords": [
+    "viewport",
+    "dimensions",
+    "responsive",
+    "media queries",
+    "ender"
+  ],
+  "main": "./verge.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryanve/verge.git"
+  }
+}
