@@ -150,7 +150,7 @@ jQuery.extend(verge)
 
 
 ```sh
-$ ender build verge
+ender build verge
 ```
 
 ## Contribute
@@ -158,8 +158,8 @@ $ ender build verge
 Contribute by making edits in [`/src`](./src) or reporting [issues](../../issues).
 
 ```sh
-$ npm install
-$ grunt jshint:src
+npm install
+npm test
 ```
 
 ## Fund
