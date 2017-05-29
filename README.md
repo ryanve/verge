@@ -62,15 +62,15 @@ verge.inViewport(elem, -100) // true if elem is in the current viewport and not 
 verge.inViewport(elem) === verge.inX(elem) && verge.inY(elem) // always true
 ```
 
-##### Substitute [inViewport](#inviewport) with: [inY](#iny) on *vertical* sites, [inX](#inx) on *horizontal* ones. 
+##### Substitute [inViewport](#inviewport) with: [inY](#iny) on *vertical* sites, [inX](#inx) on *horizontal* ones.
 
-- On pages without horizontal scroll, [inX](#inx) is always `true`. 
-- On pages without vertical scroll, [inY](#iny) is always `true`. 
+- On pages without horizontal scroll, [inX](#inx) is always `true`.
+- On pages without vertical scroll, [inY](#iny) is always `true`.
 - If the viewport width is `>=` the `document` width, then [inX](#inx) is always `true`.
 
 ### .inX()
 
-Test if any part of an element (or the first element in a matched set) is in the same x-axis section as the viewport. Returns **boolean**. 
+Test if any part of an element (or the first element in a matched set) is in the same x-axis section as the viewport. Returns **boolean**.
 
 ```js
 verge.inX(elem) // true if elem is in same x-axis as the viewport (exact)
@@ -119,7 +119,7 @@ verge.mq('tv') // -> boolean
 
 Get an a <b>object</b> containing the properties `top`, `bottom`, `left`, `right`, `width`, and `height` with respect to the top-left corner of the current viewport, and with an optional cushion amount. Its return is like that of the native [getBoundingClientRect](https://developer.mozilla.org/en/DOM/element.getBoundingClientRect).
 
-The optional <b>cushion</b> parameter is an amount of pixels to act as a cushion around the element. If none is provided then it defaults to `0` and the rectangle will match the native rectangle. If a cushion is specified, the properties are adjusted according to the cushion amount. If the cushion is **positive** the rectangle will represent an area that is larger that the actual element. If the cushion is **negative** then the rectangle will represent an area that is **smaller** that the actual element. 
+The optional <b>cushion</b> parameter is an amount of pixels to act as a cushion around the element. If none is provided then it defaults to `0` and the rectangle will match the native rectangle. If a cushion is specified, the properties are adjusted according to the cushion amount. If the cushion is **positive** the rectangle will represent an area that is larger that the actual element. If the cushion is **negative** then the rectangle will represent an area that is **smaller** that the actual element.
 
 ```js
 verge.rectangle(element) // rectangle object
