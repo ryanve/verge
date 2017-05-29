@@ -159,7 +159,7 @@ Contribute by making edits in [`/src`](./src) or reporting [issues](../../issues
 
 ```sh
 npm install
-grunt jshint:src
+npm test
 ```
 
 ## Fund
