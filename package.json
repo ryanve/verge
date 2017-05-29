@@ -5,8 +5,8 @@
   "homepage": "https://github.com/ryanve/verge",
   "license": "MIT",
   "author": "Ryan Van Etten",
-  "main": "verge.js",
-  "ender": "src/ender.js",
+  "main": "./verge.js",
+  "ender": "./src/ender.js",
   "scripts": {
     "preversion": "npm test",
     "test": "grunt jshint:src"
