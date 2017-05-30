@@ -3,7 +3,7 @@
 #### [Browse](../../releases) or [compare](../../compare/1.8.0...1.9.0) releases.
 
 ## 1.10
-- [No API changes.](https://github.com/ryanve/verge/pull/36)
+- [No API changes.](../../pull/36)
 
 ## 1.9
 
