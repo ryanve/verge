@@ -2,7 +2,7 @@
 
 <b>verge</b> is a compact set of cross-browser viewport utilities written in native JavaScript. It includes the ability to detect if an element is in the current viewport. It works as a standalone module, an [ender](#ender) module, or as a [jQuery](#jquery) plugin. (<b>npm</b>: [verge](https://www.npmjs.org/package/verge))
 
-## API ([1.9](../../releases))
+## API ([1.10](../../releases))
 
 - <a href="#viewportw"><b>.viewportW()</b></a>
 - <a href="#viewporth"><b>.viewportH()</b></a>
