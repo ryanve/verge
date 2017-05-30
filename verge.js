@@ -1,5 +1,5 @@
 /*!
- * verge 1.10.1+201705300024
+ * verge 1.10.2+201705300050
  * http://npm.im/verge
  * MIT Ryan Van Etten
  */
