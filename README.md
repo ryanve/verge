@@ -161,10 +161,6 @@ npm install
 npm test
 ```
 
-## Fund
-
-<b>[Tip the developer](https://www.gittip.com/ryanve/)</b> =)
-
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
