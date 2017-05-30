@@ -160,7 +160,3 @@ Contribute by making edits in [`./src`](./src) or reporting [issues](../../issue
 npm install
 npm test
 ```
-
-## License
-
-[MIT](http://opensource.org/licenses/MIT)
