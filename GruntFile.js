@@ -13,8 +13,8 @@ module.exports = function(grunt) {
       build: ['<%= pkg.name %>.js'],
       options: {
         ignores: ['**/**/node_modules/', '**/**/vendor/', '**/**.min.js'],
-        debug:true, expr:true, sub:true, boss:true, supernew:true, node:true, 
-        undef:true, unused:true, devel:true, evil:true, laxcomma:true, eqnull:true, 
+        debug:true, expr:true, sub:true, boss:true, supernew:true, node:true,
+        undef:true, unused:true, devel:true, evil:true, laxcomma:true, eqnull:true,
         browser:true, globals:{ender:true}, jquery:true, maxerr:10
       }
     },
@@ -23,8 +23,8 @@ module.exports = function(grunt) {
         banner: [
           '/*!',
           ' * <%= pkg.name %> <%= pkg.version %>+<%= grunt.template.today("UTC:yyyymmddHHMM") %>',
-          ' * <%= pkg.homepage %>',
-          ' * MIT License 2013 <%= pkg.author %>',
+          ' * http://npm.im/<%= pkg.name %>',
+          ' * MIT <%= pkg.author %>',
           ' */\n\n'
         ].join('\n')
       },
