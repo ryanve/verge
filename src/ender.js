@@ -1,4 +1,4 @@
 /* integrate with ender.jit.su */
-(function($, name) {
+!function($, name) {
   $ && $.ender(require(name));
-}(this.ender, 'verge'));
+}(this.ender, 'verge');
