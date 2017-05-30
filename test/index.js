@@ -1,4 +1,4 @@
-(function(root, window, document) {
+!function(root, window, document) {
   var a, b, c
     , $ = root.$
     , verge = root.verge
@@ -13,7 +13,7 @@
     , dims = ['top', 'bottom', 'left', 'right', 'width', 'height']
     , slice = dims.slice
     , push = dims.push;
-    
+
   _.assign($, verge);
   log(verge);
 
@@ -31,7 +31,7 @@
     return tests;
   }
 
-  readyTests['ua'] = navigator.userAgent || '';  
+  readyTests['ua'] = navigator.userAgent || '';
   resizeTests['viewport-w'] = $.viewportW;
   resizeTests['viewport-h'] = $.viewportH;
   scrollTests['scroll-x'] = $.scrollX;
@@ -52,10 +52,10 @@
     dynamicTests['in-viewport-a-neg'] = bind($.inViewport, $, a, -100);
     dynamicTests['in-viewport-b'] = bind($.inViewport, $, b);
     dynamicTests['in-viewport-b-pos'] = bind($.inViewport, $, b, 100);
-    dynamicTests['in-viewport-b-neg'] = bind($.inViewport, $, b, -100);  
+    dynamicTests['in-viewport-b-neg'] = bind($.inViewport, $, b, -100);
     _.assign(resizeTests, dynamicTests);
     _.assign(scrollTests, dynamicTests);
     _.every([readyTests, resizeTests, scrollTests], update);
     $(window).on('resize', bind(update, null, resizeTests)).on('scroll', bind(update, null, scrollTests));
   });
-}(this, window, document));
+}(this, window, document);
