@@ -83,8 +83,8 @@
   function calibrate(coords, cushion) {
     var o = {};
     cushion = +cushion || 0;
-    o['width'] = (o['right'] = coords['right'] + cushion) - (o['left'] = coords['left'] - cushion);
-    o['height'] = (o['bottom'] = coords['bottom'] + cushion) - (o['top'] = coords['top'] - cushion);
+    o['width'] = (o['right'] = coords['right'] + Math.abs(cushion)) - (o['left'] = coords['left'] - cushion);
+    o['height'] = (o['bottom'] = coords['bottom'] + Math.abs(cushion)) - (o['top'] = coords['top'] - cushion);
     return o;
   }
 
