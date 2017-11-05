@@ -18,7 +18,8 @@
 
 #### Accuracy
 
-- <b>verge</b>'s viewport methods represent the [CSS viewport](http://www.w3.org/TR/CSS2/visuren.html#viewport) and thus match [`@media (width)`](http://dev.w3.org/csswg/mediaqueries4/#width) and [`@media (height)`](http://dev.w3.org/csswg/mediaqueries4/#height) breakpoints.
+- [Requires](https://github.com/ryanve/verge/issues/22#issuecomment-341944009) `<!DOCTYPE html>`
+- <b>verge</b>'s viewport methods represent the [CSS viewport](http://www.w3.org/TR/CSS2/visuren.html#viewport): the [`@media (width)`](http://dev.w3.org/csswg/mediaqueries4/#width) and [`@media (height)`](http://dev.w3.org/csswg/mediaqueries4/#height) breakpoints.
 - At certain zooms the viewport dimensions given by <b>verge</b> may be 1px off the expected `@media` value due to native rounding. For greater precision (at a slight speed tradeoff) consider [<b>actual</b>](https://github.com/ryanve/actual).
 
 ***
