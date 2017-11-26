@@ -22,6 +22,14 @@
         return a < b ? b : a;
       };
 
+  function warn() {
+    if (!doc) return;
+    if (doc.doctype !== null) return;
+    if (typeof console == 'undefined') return;
+    if (typeof console.warn != 'function') return;
+    console.warn('Missing DOCTYPE. See https://github.com/ryanve/verge#accuracy');
+  }
+
   /**
    * Test if a media query is active. Like Modernizr.mq
    * @since 1.6.0
@@ -151,5 +159,6 @@
     return !!r && r.bottom >= 0 && r.right >= 0 && r.top <= viewportH() && r.left <= viewportW();
   };
 
+  warn();
   return xports;
 });
