@@ -41,7 +41,7 @@
    * @return {MediaQueryList|Object}
    */
   xports['matchMedia'] = matchMedia ? function() {
-    // matchMedia must be binded to window
+    // matchMedia must be bound to window
     return matchMedia.apply(win, arguments);
   } : function() {
     // Gracefully degrade to plain object
