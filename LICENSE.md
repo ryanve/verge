@@ -1,4 +1,4 @@
-## MIT License <br> &copy; [contributors](../../graphs/contributors)
+## MIT License <br> &copy; [deepskyblue](../../graphs/contributors)
 
 ```
 Permission is hereby granted, free of charge, to any person obtaining a copy
