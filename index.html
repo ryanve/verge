@@ -2,7 +2,7 @@
 <html lang="en-US">
 <head>
   <meta charset="utf-8">
-  <title>verge: test suite</title>
+  <title>verge viewport library test suite</title>
   <meta name=viewport content="width=device-width, initial-scale=1">
   <style>
     html { font-family:sans-serif; background:#fdf6e3; color:#586e75; font-size:1em }
@@ -16,19 +16,19 @@
     td:last-child { color:#dc322f; }
     pre { padding:1em; background:#073642; color:#93a1a1 }
   </style>
-  <script src="./vendor/ender.js"></script>
-  <script src="../src/verge.js"></script>
-  <script src="./index.js"></script>
+  <script src="beyond.js"></script>
+  <script src="verge.js"></script>
+  <script src="test.js"></script>
 </head>
 <body>
   <div>
-    <h1><a href="http://github.com/ryanve/verge">verge</a> Test Suite</h1>
+    <h1><a href="http://github.com/ryanve/verge">verge</a> viewport suite</h1>
   </div>
 
   <pre id="ua"></pre>
 
   <div id="a"><pre><code>div#a</code></pre></div>
-  
+
   <table id=tests>
     <tr>
       <th scope="col"><a href=#tests accesskey=s>test<br>code</a></th>
@@ -116,8 +116,8 @@
       <td><code id="in-viewport-b-neg"></code></td>
     </tr>
   </table>
-  
+
   <div id="b"><pre><code>div#b</code></pre></div>
   <div id="c"><pre><code>div#c</code></pre></div>
-</body> 
+</body>
 </html>

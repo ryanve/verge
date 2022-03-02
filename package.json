@@ -5,25 +5,17 @@
   "homepage": "https://github.com/ryanve/verge",
   "license": "MIT",
   "author": "Ryan Van Etten",
-  "main": "./verge.js",
-  "ender": "./src/ender.js",
+  "main": "verge.js",
+  "ender": "bridge.js",
   "scripts": {
     "preversion": "npm test",
-    "test": "grunt jshint:src"
+    "test": "npm doctor"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ryanve/verge.git"
-  },
+  "repository": "github:ryanve/verge",
   "bugs": {
     "url": "https://github.com/ryanve/verge/issues"
   },
-  "devDependencies": {
-    "grunt": "0.4.5",
-    "grunt-contrib-uglify": "0.6.0",
-    "grunt-contrib-concat": "0.3.0",
-    "grunt-contrib-jshint": "0.8.0"
-  },
+  "devDependencies": {},
   "keywords": [
     "width",
     "height",
